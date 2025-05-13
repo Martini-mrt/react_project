@@ -1,0 +1,36 @@
+@use "../../assets/styles/mixins";
+
+.headerlayout {
+  // styles
+
+  padding: clamp(16px, 2.7vw, 24px) 0;
+  
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    min-height: clamp(32px, 5vw, 48px);
+
+    
+
+    @include mixins.tablet {
+      gap: 20px;
+    }
+
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    width: 100%;
+    // max-width: 908px;
+
+    @include mixins.tablet {
+      gap: 20px;
+    }
+
+  }
+}

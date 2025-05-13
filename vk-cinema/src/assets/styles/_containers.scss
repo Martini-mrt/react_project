@@ -1,0 +1,33 @@
+@use "mixins";
+
+/* Контейнеры */
+.container {
+	margin: 0 auto;
+	padding: 0 80px;
+
+	max-width: 1440px;
+	width: 100%;
+}
+
+// @include tabletPort() {
+// 	.container {
+// 	padding: 0 36px;
+// 	max-width: 1024px;
+// 	}
+// }
+
+@include mixins.tablet {
+	.container {
+	// padding: 0 72px;
+	padding: 0 20px;
+	max-width: 100%;
+	}
+}
+
+@include mixins.mobile {
+	// 375 в макете
+	.container {
+	min-width: 375px;
+	}
+}
+

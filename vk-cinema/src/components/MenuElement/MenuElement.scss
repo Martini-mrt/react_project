@@ -1,0 +1,41 @@
+
+@use "../../assets/styles/mixins";
+
+.menuelement {
+  cursor: pointer;
+  font-size: 24px;
+  transition:
+    0.3s color ease,
+    0.3s transform cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  &:hover {
+    color: var(--hoverColorMenu);
+  }
+
+  &:focus-visible {
+    color: var(--hoverColorMenu);
+    transform: scale(1.3);
+  }
+
+  &__svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  &--desktop {
+    display: flex;
+
+    @include mixins.mobile {
+      display: none;
+    }
+  }
+
+  &--mobile {
+    display: none;
+    align-items: center;
+
+    @include mixins.mobile {
+      display: flex;
+    }
+  }
+}

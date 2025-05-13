@@ -1,0 +1,16 @@
+.sectionlist {
+  // styles
+
+  padding-bottom: clamp(32px, 5vw, 120px);
+
+  &__heading {
+    margin-bottom: clamp(40px, 5vw, 64px);
+    font-size: clamp(24px, 3.7vw, 40px);
+    font-weight: 700;
+  }
+
+  &__footer {
+    height: 100px;
+    background-color: aqua;
+  }
+}

@@ -1,0 +1,68 @@
+@use "../../assets/styles/mixins";
+
+.btn {
+  display: grid;
+  place-items: center;
+  // flex-shrink: 0;
+  padding: 16px clamp(40px, 3vw, 48px);
+
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 133%;
+  color: var(--textColor);
+  border-radius: 28px;
+
+  transition: background-color 0.2s ease;
+
+  &__svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  &.primary {
+    background-color: var(--btnPrimary);
+    &:hover {
+      background-color: var(--btnPrimaryHover);
+    }
+
+    @include mixins.tablet {
+      width: 100%;
+    }
+  }
+
+  &.default {
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    background-color: var(--btnDefault);
+
+    &:hover {
+      background-color: var(--btnPrimary);
+    }
+  }
+
+  &.icon-btn {
+    padding: 16px 21px;
+    background-color: var(--btnIcon);
+  }
+
+  &:focus-visible {
+    background-color: var(--btnFocus);
+  }
+
+  
+}
+
+// .btnlike {
+//   display: grid;
+//   place-items: center;
+//   padding: 16px 21px;
+//   // width: 68px;
+//   // height: 56px;
+//   border-radius: 28px;
+//   border: 1px solid rgba(0, 0, 0, 0.4);
+//   background-color: var(--btnDefault);
+
+//   &__svg {
+//     width: 24px;
+//     height: 24px;
+//   }
+// }

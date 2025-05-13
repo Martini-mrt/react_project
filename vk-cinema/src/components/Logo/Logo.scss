@@ -1,0 +1,26 @@
+@use "../../assets/styles/mixins";
+
+.logo {
+  display: flex;
+  align-items: center;
+  max-width: 144px;
+  width: 100%;
+  height: 32px;
+  // background-color: rgba(50, 226, 50, 0.941);
+
+  // background-image: url(../../assets/img/logo.svg);
+  // background-size: contain;
+  // background-repeat: no-repeat;
+  // background-position: right center;
+
+  &__img {
+    display: block;
+    @include mixins.mobile {
+      // max-width: 80px;
+      height: 20px;
+  }
+  }
+
+
+  
+}
