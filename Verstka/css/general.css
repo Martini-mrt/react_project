@@ -1,0 +1,127 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--colorDark);
+  font-family: "OpenSans", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.visually-hidden {
+  /* скрываем элемент - визуально */
+  position: absolute !important;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0 !important;
+  border: 0 !important;
+  height: 1px !important;
+  width: 1px !important;
+  overflow: hidden;
+}
+
+.container {
+  margin: 0 auto;
+  padding-left: 13px;
+  padding-right: 13px;
+  max-width: 1630px;
+}
+
+.subheading {
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 65px;
+  color: var(--colorDark);
+}
+
+.btn-arrow-circle-white {
+  cursor: pointer;
+}
+
+.btn-arrow-circle-white__ico path:first-child {
+  fill: var(--colorAshen);
+  stroke: var(--colorAshen);
+  transition-property: fill, stroke;
+  transition-duration: 0.2s;
+  transition-timing-function: ease;
+}
+
+/* стрелочка */
+.btn-arrow-circle-white__ico path + path {
+  stroke: var(--colorBlack);
+  fill: transparent;
+  transition-property: fill, stroke;
+  transition-duration: 0.2s;
+  transition-timing-function: ease;
+}
+
+/* hover */
+.btn-arrow-circle-white:hover .btn-arrow-circle-white__ico path:first-child {
+  fill: var(--colorVioletFill);
+  stroke: var(--colorWhite);
+}
+
+.btn-arrow-circle-white:hover .btn-arrow-circle-white__ico path + path {
+  stroke: var(--colorBlack);
+}
+
+/* active */
+.btn-arrow-circle-white:active .btn-arrow-circle-white__ico path:first-child {
+  fill: var(--colorVioletFill);
+  stroke: var(--colorVioletActive);
+}
+
+/* focus */
+.btn-arrow-circle-white.focus-visible
+  .btn-arrow-circle-white__ico
+  path:first-child {
+  stroke: var(--colorVioletActive);
+}
+
+.dash::after {
+  content: "-";
+}
+
+/* js style scroll*/
+.dis-scroll {
+  position: fixed;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 100vh;
+  overscroll-behavior: none;
+}
+
+@media (max-width: 1025px) {
+  .container {
+    padding-left: 50px;
+    padding-right: 50px;
+    max-width: 1024px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding-left: 6.5vw;
+    padding-right: 6.4vw;
+    max-width: 768px;
+  }
+}
+
+@media (max-width: 350px) {
+  .container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .subheading {
+    font-size: 28px;
+    line-height: 38px;
+  }
+
+  .dash::after {
+    content: " — ";
+  }
+}
