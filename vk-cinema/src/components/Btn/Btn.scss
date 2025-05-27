@@ -19,15 +19,31 @@
     height: 24px;
   }
 
+  @include mixins.tablet {
+    //!убрал для списка жанров
+    // width: 100%;
+  }
+
+  @include mixins.mobile {
+    //!убрал для списка жанров
+    // width: 100%;
+  }
+
+
+
+
+
   &.primary {
     background-color: var(--btnPrimary);
     &:hover {
       background-color: var(--btnPrimaryHover);
     }
 
-    @include mixins.tablet {
-      width: 100%;
-    }
+    // @include mixins.tablet {
+      
+    //   width: 100%;
+    // }
+
   }
 
   &.default {

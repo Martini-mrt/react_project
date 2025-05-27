@@ -1,48 +1,35 @@
 // import MainPage from "./pages/MainPage";
 
+import Footer from "./components/Footer";
 import HeaderLayout from "./layouts/HeaderLayout";
+import SocialList from "./layouts/SocialList";
+import GenrePage from "./pages/GenrePage";
 import MainPage from "./pages/MainPage";
+import MoviesByGenrePage from "./pages/MoviesByGenrePage";
+
+
+// TODO 
+// todo Переделть ListCard - grid по стилям проверить
+
+
 
 function App() {
   return (
     // !сделать Strict mode!
     <>
       <HeaderLayout />
-
+{/*  */}
       <MainPage />
+
+     {/* <GenrePage /> */}
+
+     {/* <MoviesByGenrePage /> */}
+
+     <Footer>
+        <SocialList />
+      </Footer>
     </>
 
-    // <>
-    //   <header className="header">
-    //     {/* logo */}
-    //     <img src="" alt="Логотип VK Маруся" />
-
-    //     {/* nav */}
-    //     <nav>
-    //       <ul className="list-nav">
-    //         <li>
-    //           <a className="link-nav" href="#">
-    //             Главная
-    //           </a>
-    //         </li>
-    //         <li>
-    //           <a className="link-nav" href="#">
-    //             Жанры
-    //           </a>
-    //         </li>
-    //       </ul>
-
-    //       {/* поиск - резиновый */}
-    //       <div>Поиск</div>
-    //     </nav>
-
-    //     {/* логин */}
-    //   </header>
-
-    //   <main>
-    //     <section className="content"></section>
-    //   </main>
-    // </>
   );
 }
 

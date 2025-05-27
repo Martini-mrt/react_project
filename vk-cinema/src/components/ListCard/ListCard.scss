@@ -10,17 +10,24 @@
     grid-template-columns: repeat(5,1fr);
     grid-template-rows: repeat(2,1fr);
     row-gap: 64px;
-    column-gap: 38px;
+    column-gap: clamp(20px, 2vw, 40px);
+
+    @include mixins.tablet {
+      grid-template-columns: repeat(2,1fr);
+    grid-template-rows: repeat(5,1fr);
+     }
   }
   
 
-  // @include mixins.tablet {
-  //   grid-template-columns: repeat(2,1fr);
-  // grid-template-rows: repeat(5,1fr);
-  //  }
+  
 
-  //  Анимация
+ 
    &__item {
+
+    display: flex;
+    justify-content: center;
+
+     //  Анимация
     opacity: 0;
     transform: translateY(20px);
     animation: fadeInUp 0.5s forwards;

@@ -3,7 +3,10 @@
 /* Контейнеры */
 .container {
 	margin: 0 auto;
-	padding: 0 80px;
+	// padding: 0 80px;
+	padding: 0 clamp(20px, 2vw, 80px);
+
+	// padding: 0 22px;
 
 	max-width: 1440px;
 	width: 100%;

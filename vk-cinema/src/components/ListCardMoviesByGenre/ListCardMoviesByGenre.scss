@@ -1,0 +1,33 @@
+@use "../../assets/styles/mixins";
+
+.listcardmoviesbygenre {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  column-gap: clamp(10px, 3vw, 40px);
+  row-gap: 64px;
+
+  padding-bottom: 64px;
+
+
+  @include mixins.tablet {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include mixins.mobile {
+    grid-template-columns: 1fr;
+    padding-bottom: 40px;
+  }
+
+
+  &__wrap-btn {
+    display: flex;
+    justify-content: center;
+  }
+
+}
+
+
+
+
+
+

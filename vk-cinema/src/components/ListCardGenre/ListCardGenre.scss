@@ -1,0 +1,24 @@
+@use "../../assets/styles/mixins";
+
+.listcardgenre {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  grid-template-rows: repeat(2,1fr);
+  gap: 40px;
+
+&__item {
+ display: flex;
+ justify-content: center;
+}
+
+  @include mixins.tablet {
+    grid-template-columns: repeat(3,1fr);
+    // gap: clamp(20px, 5vw, 40px);
+
+  }
+
+  @include mixins.mobile {
+    grid-template-columns: 1fr;
+    justify-content: center;
+  }
+}
