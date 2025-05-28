@@ -48,21 +48,23 @@ const arr = [
 const ListCard: React.FC<ListCardProps> = () => {
   const width = useWindowWidth();
   console.log(width);
+  
+  const breackpointAddaptive = 1000;
+
 
   return (
     <div className="listcard">
-      {width > 900 ? (
+      {width > breackpointAddaptive ? (
         <ul className="container listcard__grid">
           {arr.map((card, id) => (
             <li className="listcard__item" key={id}>
-              <CardFilm position={id + 1} />
+              <CardFilm position={id + 1}  />
             </li>
           ))}
         </ul>
       ) : (
      
         <Swiper
-          
           spaceBetween={40}
           slidesPerView={"auto"}
           wrapperTag="ul"
@@ -70,15 +72,12 @@ const ListCard: React.FC<ListCardProps> = () => {
           onSwiper={(swiper) => console.log(swiper)}
         >
           
-
           {arr.map((card, id) => (
             <SwiperSlide tag="li" className="listcard__item" key={id}>
               <CardFilm position={id + 1} />
             </SwiperSlide>
           ))}
         </Swiper>
-
-       
       )}
     </div>
   );

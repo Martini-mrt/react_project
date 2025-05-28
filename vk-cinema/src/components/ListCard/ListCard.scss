@@ -12,10 +12,14 @@
     row-gap: 64px;
     column-gap: clamp(20px, 2vw, 40px);
 
-    @include mixins.tablet {
-      grid-template-columns: repeat(2,1fr);
-    grid-template-rows: repeat(5,1fr);
-     }
+    // @include mixins.tablet {
+      
+    //   grid-template-columns: repeat(2,40%);
+    // grid-template-rows: repeat(5,1fr);
+    // justify-content: center;
+    // column-gap: 40px;
+    
+    //  }
   }
   
 

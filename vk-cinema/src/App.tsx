@@ -8,8 +8,6 @@ import MainPage from "./pages/MainPage";
 import MoviesByGenrePage from "./pages/MoviesByGenrePage";
 
 
-// TODO 
-// todo Переделть ListCard - grid по стилям проверить
 
 
 

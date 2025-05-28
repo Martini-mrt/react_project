@@ -2,5 +2,6 @@
 
 export interface CardFilmProps {
   // children?: ReactNode;
-  position: number;
+  position?: number;
+  btnClose?: boolean;
 }

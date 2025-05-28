@@ -70,13 +70,15 @@ const arr = [
 ];
 
 
+
 const ListCardMoviesByGenre: React.FC<ListCardMoviesByGenreProps> = () => {
   return (
     <>
     <ul className="container listcardmoviesbygenre">
   {arr.map((card, id) => (
+    // ! на 800 отоброжать 16 елементов на 400 15
     <li className="listcardmoviesbygenre__item" key={id}>
-      <CardFilm position={id + 1} />
+      <CardFilm  />
     </li>
   ))}
   </ul>

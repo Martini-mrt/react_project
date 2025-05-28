@@ -14,10 +14,18 @@
   }
 
   @include mixins.mobile {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2,1fr);
     padding-bottom: 40px;
   }
 
+  @include mixins.mobile-S {
+    grid-template-columns: 1fr;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: center;
+  }
 
   &__wrap-btn {
     display: flex;
