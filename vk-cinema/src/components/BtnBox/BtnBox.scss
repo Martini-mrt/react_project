@@ -1,0 +1,35 @@
+@use "../../assets/styles/mixins";
+
+.btnbox {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  padding-top: clamp(20px, 3vw, 54px);
+
+  &__btn-boxWrap {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__btn-primary {
+    @include mixins.mobile-S {
+      width: 100%;
+    }
+    // @include mixins.mobile{
+    //   width: 100%;
+    // }
+  }
+
+  &__btn-default {
+    @include mixins.mobile-S {
+      flex-grow: 1;
+    }
+  }
+
+  &--no-wrap {
+    flex-wrap:nowrap;
+  }
+
+}
+

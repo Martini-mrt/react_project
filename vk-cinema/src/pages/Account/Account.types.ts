@@ -1,6 +1,5 @@
 import { ReactNode } from 'react';
 
-export interface SectionListProps {
+export interface AccountProps {
   children?: ReactNode;
-  heading?: string;
 }

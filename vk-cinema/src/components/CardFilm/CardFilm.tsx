@@ -3,11 +3,11 @@ import './CardFilm.scss';
 import { CardFilmProps } from './CardFilm.types';
 import IconSVG from '../IconSVG';
 
-const CardFilm: React.FC<CardFilmProps> = ({ position, btnClose }) => {
+const CardFilm: React.FC<CardFilmProps> = ({ topPosition, btnClose }) => {
 
   
 
-  return <a className= {`cardfilm   ${position ? "cardfilm--show-top" : ""} `} data-label={position} tabIndex={0}>
+  return <a className= {`cardfilm   ${topPosition ? "cardfilm--show-top" : ""} `} data-label={topPosition} tabIndex={0}>
 
     { btnClose && 
     <button className='cardfilm__btn-close'>

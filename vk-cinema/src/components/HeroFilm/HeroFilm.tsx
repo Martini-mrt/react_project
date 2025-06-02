@@ -10,13 +10,11 @@ import BtnLike from "../BtnLike -del";
 
 // ! меню хедера не соответвует макету
 
-
-const HeroFilm: React.FC<HeroFilmProps> = ({ name }) => {
+const HeroFilm: React.FC<HeroFilmProps> = ({ name, children }) => {
   return (
     <section className="herofilm">
       <div className="container herofilm__container">
-        {/*  */}
-
+        
         <div className="herofilm__content">
           <InfoFilm
             rating={7.5}
@@ -31,27 +29,14 @@ const HeroFilm: React.FC<HeroFilmProps> = ({ name }) => {
           <p className="herofilm__description">
             Увлекательные приключения самого известного сыщика всех времен
           </p>
-          <div className="herofilm__btn-box">
-            <Btn text="Трейлер" type="primary" />
-            <Btn text="О фильме" type="default" />
 
-           <div className="herofilm__btn-boxWrap">
-           <Btn type="like" like={true} />
-           <Btn type="refresh" />
-           </div>
-           
-
-            {/* !сделать много функц комп */}
-            {/* <BtnLike like={true} /> */}
-
-          </div>
+          {children}
         </div>
 
         <div className="herofilm__wrap-img">
           <img className="herofilm__img" src={img} alt={name} />
         </div>
 
-        {/*  */}
       </div>
     </section>
   );

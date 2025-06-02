@@ -1,4 +1,4 @@
 export interface ListCardProps {
-  mode: string;
-  adaptive: string;
+  mode?: string;
+  // adaptive: string;
 }

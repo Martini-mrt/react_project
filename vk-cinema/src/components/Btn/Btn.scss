@@ -38,12 +38,6 @@
     &:hover {
       background-color: var(--btnPrimaryHover);
     }
-
-    @include mixins.tablet {
-      
-      width: 100%;
-    }
-
   }
 
   &.default {
@@ -53,6 +47,8 @@
     &:hover {
       background-color: var(--btnPrimary);
     }
+
+    
   }
 
   &.icon-btn {

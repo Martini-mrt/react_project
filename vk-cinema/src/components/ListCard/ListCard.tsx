@@ -45,7 +45,9 @@ const arr = [
   },
 ];
 
-const ListCard: React.FC<ListCardProps> = () => {
+const ListCard: React.FC<ListCardProps> = ({ mode }) => {
+
+
   const width = useWindowWidth();
   console.log(width);
   
@@ -58,7 +60,7 @@ const ListCard: React.FC<ListCardProps> = () => {
         <ul className="container listcard__grid">
           {arr.map((card, id) => (
             <li className="listcard__item" key={id}>
-              <CardFilm position={id + 1}  />
+              <CardFilm topPosition={ mode === "top" ? id + 1 : false} btnClose={mode === "btnClose"} />
             </li>
           ))}
         </ul>
@@ -74,7 +76,7 @@ const ListCard: React.FC<ListCardProps> = () => {
           
           {arr.map((card, id) => (
             <SwiperSlide tag="li" className="listcard__item" key={id}>
-              <CardFilm position={id + 1} />
+              <CardFilm topPosition={ mode === "top" ? id + 1 : false} btnClose={mode === "btnClose"} />
             </SwiperSlide>
           ))}
         </Swiper>

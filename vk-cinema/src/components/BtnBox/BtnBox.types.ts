@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-export interface HeroFilmProps {
+export interface BtnBoxProps {
   children?: ReactNode;
-  name: string;
+  AllBtnShow: boolean;
 }

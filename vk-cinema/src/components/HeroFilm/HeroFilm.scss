@@ -5,11 +5,9 @@
 
   padding-bottom: 42px;
 
-  
-
   @include mixins.mobile {
     padding-bottom: 24px;
-   }
+  }
 
   &__container {
     display: flex;
@@ -18,8 +16,8 @@
     gap: 35px;
 
     @include mixins.mobile {
-     flex-direction: column;
-     gap: 24px;
+      flex-direction: column;
+      gap: 24px;
     }
   }
 
@@ -32,7 +30,7 @@
     @include mixins.mobile {
       // order: 1;
       width: 100%;
-     }
+    }
   }
 
   &__img {
@@ -43,7 +41,6 @@
     display: flex;
     flex-direction: column;
     gap: clamp(12px, 3vw, 16px);
-    
 
     // width: 500px;
     width: 50%;
@@ -52,7 +49,7 @@
     @include mixins.mobile {
       order: 1;
       width: 100%;
-     }
+    }
   }
 
   &__heading {
@@ -69,17 +66,4 @@
     line-height: 133%;
   }
 
- 
-  &__btn-box {
-   display: flex;
-   flex-wrap: wrap;
-   align-items: center;
-   gap: 16px;
-   padding-top: clamp(20px, 3vw, 54px);
-  }
-
-  &__btn-boxWrap {
-    display: flex;
-    gap: 16px;
-  }
 }

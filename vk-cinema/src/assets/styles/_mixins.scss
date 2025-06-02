@@ -4,6 +4,8 @@
 	}
 }
 
+
+
 @mixin mobile() {
 	// 650px
 	@media (max-width: 800px) {
@@ -11,8 +13,15 @@
 	}
 }
 
+
+@mixin mobile-M() {
+	// 650px
+	@media (max-width: 500px) {
+		@content;
+	}
+}
+
 @mixin mobile-S() {
-	
 	@media (max-width: 400px) {
 		@content;
 	}

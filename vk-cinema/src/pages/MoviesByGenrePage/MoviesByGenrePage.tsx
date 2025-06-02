@@ -1,7 +1,7 @@
 import React from 'react';
 import './MoviesByGenrePage.scss';
 import { MoviesByGenrePageProps } from './MoviesByGenrePage.types';
-import SectionList from '../../layouts/SectionList';
+import SectionList from '../../layouts/Section';
 import ListCardMoviesByGenre from '../../components/ListCardMoviesByGenre';
 
 const MoviesByGenrePage: React.FC<MoviesByGenrePageProps> = () => {

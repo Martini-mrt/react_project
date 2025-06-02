@@ -1,7 +1,7 @@
-.sectionlist {
+.section {
   // styles
-
-  padding-bottom: clamp(32px, 5vw, 120px);
+   padding: clamp(16px, 2vw, 64px) 0 clamp(32px, 5vw, 120px) 0;
+  // padding-bottom: clamp(32px, 5vw, 120px);
 
   &__heading {
     margin-bottom: clamp(40px, 5vw, 64px);

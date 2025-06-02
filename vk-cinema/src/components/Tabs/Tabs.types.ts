@@ -1,6 +1,5 @@
 import { ReactNode } from 'react';
 
-export interface HeroFilmProps {
+export interface TabsProps {
   children?: ReactNode;
-  name: string;
 }

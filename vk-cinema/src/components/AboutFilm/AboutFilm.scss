@@ -1,0 +1,53 @@
+@use "../../assets/styles/mixins";
+
+.aboutfilm {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 600px;
+  width: 100%;
+
+
+@include mixins.mobile {
+    max-width: 100%;
+  }
+
+  @include mixins.mobile-M {
+    gap: 12px;
+  }
+
+  &__item {
+    display: grid;
+    grid-template-columns: max-content 1fr 200px;
+    gap: 8px;
+    font-size: 18px;
+    line-height: 133%;
+    color: var(--ColorWhite);
+
+    @include mixins.mobile-M {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+  }
+
+  &__dashed {
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.5);
+    @include mixins.mobile-M {
+      display: none;
+    }
+  }
+
+  &__label {
+    white-space: nowrap;
+
+    @include mixins.mobile-M {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 14px;
+    }
+  }
+
+  &__value {
+    white-space: nowrap;
+  }
+}
