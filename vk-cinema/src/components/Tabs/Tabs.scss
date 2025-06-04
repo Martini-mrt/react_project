@@ -1,3 +1,14 @@
-.tabs {
-  // styles
+@use "../../assets/styles/mixins";
+
+
+.tabs-list {
+  display: flex;
+  gap: clamp(24px, 13vw, 64px);
+
+   @include mixins.mobile-S {
+     gap: 24px;
+    }
 }
+
+
+

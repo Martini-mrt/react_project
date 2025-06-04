@@ -1,0 +1,51 @@
+.tabbutton {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  white-space: nowrap;
+  font-size: 24px;
+  color: var(--ColorWhite);
+
+  transition: color 0.3s ease;
+
+  // transform: scaleX(0);
+  // border-bottom: solid 2px var(--activeColorMenu);
+
+  &:hover {
+    color: var(--hoverColorMenu);
+  }
+
+  &__svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  &__svg path {
+    transition: fill 0.3s ease;
+  }
+
+  &:hover &__svg path {
+    fill: var(--hoverColorMenu);
+  }
+
+  //С делать обший класс анимации
+  &::after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    display: block;
+    content: "";
+    width: 100%;
+    border-bottom: solid 2px var(--activeColorMenu);
+    transform: scaleX(0);
+
+    transition: transform 0.25s ease-in-out;
+  }
+
+  &.active::after {
+    transform: scaleX(1);
+  }
+}
