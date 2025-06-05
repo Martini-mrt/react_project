@@ -3,12 +3,12 @@ import './Footer.scss';
 import { FooterProps } from './Footer.types';
 
 const Footer: React.FC<FooterProps> = ({ children }) => {
-  return <div className="footer">
+  return <footer className="footer">
     <div className='container'>
     {children}
     </div>
     
-    </div>;
+    </footer>;
 };
 
 export default Footer;

@@ -17,8 +17,9 @@ const Tabs: React.FC<TabsProps> = ({ children }) => {
   console.log(tabTitles);
 
   return (
-    <>
-      <div className="container tabs-list">
+  
+    <div className="tabs">
+      <div className="container tabs__btn">
         {tabTitles.map((btnBuild, index) => (
           <TabButton
             isActive={index === activeIndex}
@@ -30,19 +31,10 @@ const Tabs: React.FC<TabsProps> = ({ children }) => {
         ))}
       </div>
 
-      <div className="">{children[activeIndex]}</div>
-    </>
+      <div className="tabs__content">{children[activeIndex]}</div>
+    </div>
   );
 };
 
 export default Tabs;
 
-// interface TabProps {
-//   label: string;
-//   children?: ReactNode;
-// }
-
-// const tabTitles = Children.map(children, (child) => {
-//   const element = child as ReactElement<TabProps>;
-//   return element.props.label;
-// });

@@ -5,6 +5,8 @@ import { AboutFilmProps } from "./AboutFilm.types";
 const AboutFilm: React.FC<AboutFilmProps> = ({ children }) => {
   return (
     <ul className="aboutfilm">
+
+  {/* адаптировать список через MAP */}
       <li className="aboutfilm__item">
         <span className="aboutfilm__label">Язык оригинала</span>
         <span className="aboutfilm__dashed"></span>

@@ -1,0 +1,44 @@
+@use "../../assets/styles/mixins";
+
+.accountitem {
+  display: flex;
+  gap: 16px;
+
+  &__ico {
+    display: grid;
+    place-items: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    font-size: 24px;
+    font-weight: 700;
+    background: rgba(255, 255, 255, 0.5);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: var(--ColorWhite);
+  }
+
+  &__label {
+    font-size: 18px;
+    line-height: 133%;
+
+    @include mixins.mobile-S {
+      font-size: 14px;
+      line-height: 143%;
+    }
+  }
+
+  &__value {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 133%;
+
+    @include mixins.mobile-S {
+      font-size: 18px;
+    }
+  }
+}

@@ -19,7 +19,7 @@ const MainPage: React.FC = () => {
       </HeroFilm>
 
       <Section heading="Топ 10 фильмов" childrenInContainer={false}>
-        <ListCard mode="top" adaptive="slider" />
+        <ListCard mode="top" />
       </Section>
 
      

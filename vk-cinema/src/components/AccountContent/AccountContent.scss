@@ -1,0 +1,17 @@
+@use "../../assets/styles/mixins";
+
+.accountcontent {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  &__btn {
+    margin-top: 24px;
+    max-width: 262px;
+
+    @include mixins.mobile-S {
+      margin-top: 0;
+      max-width: 100%;
+    }
+  }
+}
