@@ -1,4 +1,4 @@
-import React, { useState, Children, ReactElement } from "react";
+import React, { useState } from "react";
 import "./Tabs.scss";
 import { TabsProps, TabProps } from "./Tabs.types";
 import TabButton from "../TabButton";

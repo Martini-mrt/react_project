@@ -1,0 +1,45 @@
+.inputform {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  border-radius: 8px;
+
+  transition: border .3s ease;
+
+
+   &:focus-within {
+    border-color: var(--focusColor);
+  }
+
+   &:focus-within >  &__svg {
+    fill: var(--focusColor);
+  }
+
+&__svg {
+  // width: 24px;
+  height: 24px;
+  fill: rgba(0, 0, 0, 0.4);
+  transition: fill .3s ease;
+  // stroke: rgba(0, 0, 0, 0.4);
+
+}
+
+
+  &__input {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 133%;
+    color: var(--ColorBlack);
+  }
+ 
+  &.inputform--error {
+      border: 1px solid var(--errorColor);
+  }
+
+&.inputform--error &__svg {
+      fill: var(--errorColor);
+  }
+
+}

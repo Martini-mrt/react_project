@@ -3,9 +3,10 @@
 import Footer from "./components/Footer";
 import HeaderLayout from "./layouts/HeaderLayout";
 import SocialList from "./layouts/SocialList";
-import Account from "./pages/Account";
+import AccountPage from "./pages/AccountPage";
 import FilmPage from "./pages/FilmPage";
 import GenrePage from "./pages/GenrePage";
+import LoginPage from "./pages/LoginPage";
 import MainPage from "./pages/MainPage";
 import MoviesByGenrePage from "./pages/MoviesByGenrePage";
 
@@ -15,11 +16,11 @@ import MoviesByGenrePage from "./pages/MoviesByGenrePage";
 
 function App() {
   return (
-    // !сделать Strict mode!
+  
     <>
       <HeaderLayout />
 {/*  */}
-      {/* <MainPage /> */}
+      <MainPage />
 
      {/* <GenrePage /> */}
 
@@ -27,7 +28,9 @@ function App() {
 
       {/* <FilmPage /> */}
 
-      <Account />
+      {/* <AccountPage /> */}
+
+      <LoginPage />
 
      <Footer>
         <SocialList />

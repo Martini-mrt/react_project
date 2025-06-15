@@ -1,6 +1,6 @@
 import React from 'react';
-import './Account.scss';
-import { AccountProps } from './Account.types';
+import './AccountPage.scss';
+import { AccountProps } from './AccountPage.types';
 import Section from '../../layouts/Section';
 import ListCard from '../../components/ListCard';
 import Tabs, {Tab} from '../../components/Tabs';
@@ -13,8 +13,6 @@ const Account: React.FC<AccountProps> = () => {
    
    {/* табы */}
     
-{/* !!!! у табов сделать один контейнер поставить релативе у свапера оставить схлопоание по тени 
-маргинов и паддингов - выставить z-index блоку свайпера посатвить низкий приоритет */}
 
    <Tabs>
      <Tab btnBuild={{title: "Избранные фильмы", mobileTitle: "Избранное", icon: "like"}} >
