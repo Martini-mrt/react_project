@@ -3,10 +3,11 @@ import "./Btn.scss";
 import { BtnProps } from "./Btn.types";
 import IconSVG from "../IconSVG";
 
-const Btn: React.FC<BtnProps> = ({ text, type, like, className }) => {
+const Btn: React.FC<BtnProps> = ({ text, type, like, className = "" }) => {
   switch (type) {
     case "primary":
     case "default":
+    case "onlyText":
       return (
         <button className={`btn ${type} ${className}`} type="button">
           {text}

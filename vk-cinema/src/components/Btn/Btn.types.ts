@@ -2,6 +2,6 @@
 export interface BtnProps {
   text?: string;
   like?: boolean;
-  type: "primary" | "default" | "refresh" | "like";
+  type: "primary" | "default" | "onlyText" | "refresh" | "like";
   className?: string;
 }

@@ -7,17 +7,23 @@ import FormLogin from '../../components/FormLogin';
 import FormRegistration from '../../components/FormRegistration';
 
 
-// !сделать формы регистрации и логина
+// !доделать стиль формы отступы с кнопками
+// ! разобраться с окном контента и описанием
 
 
 const LoginPage: React.FC<LoginPageProps> = ({ children }) => {
   return (
 <Owerlay>
-  <ModalWindows>
+  <ModalWindows heading='Регистрация завершина'>
 
     {/* <FormLogin /> */}
 
-    <FormRegistration />
+    {/* <FormRegistration /> */}
+
+
+    <p className='modalwindows__description'>
+     Используйте вашу электронную почту для входа
+    </p>
 
 
   </ModalWindows>
