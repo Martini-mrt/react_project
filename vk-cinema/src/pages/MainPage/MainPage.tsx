@@ -1,14 +1,34 @@
 import React from "react";
 import "./MainPage.scss";
-// import HeroLayout from "../../layouts/HeroLayout";
+
 import HeroFilm from "../../components/HeroFilm";
 import Section from "../../layouts/Section";
 import ListCard from "../../components/ListCard";
-// import Footer from "../../components/Footer";
-// import SocialList from "../../layouts/SocialList";
+
 import BtnBox from "../../components/BtnBox";
+import { useMovieById } from "../../hooks/useMovieById";
+import { getMovie } from "../../api/movies";
+
+
+
+
+
+
+
+
 
 const MainPage: React.FC = () => {
+
+  // useMovieById('14');
+
+  // console.log(getMovie('14'))
+
+  const {data , isLoading, error} = useMovieById("");
+
+console.log(data?.title , isLoading, error)
+
+
+
   return (
     <>
       {/* <HeroLayout /> */}

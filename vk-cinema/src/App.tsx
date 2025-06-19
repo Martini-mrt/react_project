@@ -30,7 +30,7 @@ function App() {
 
       {/* <AccountPage /> */}
 
-      <LoginPage />
+      {/* <LoginPage /> */}
 
      <Footer>
         <SocialList />

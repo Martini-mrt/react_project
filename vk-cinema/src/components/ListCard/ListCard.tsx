@@ -49,7 +49,7 @@ const ListCard: React.FC<ListCardProps> = ({ mode }) => {
 
 
   const width = useWindowWidth();
-  console.log(width);
+  // console.log(width);
   
   const breackpointAddaptive = 1000;
 
