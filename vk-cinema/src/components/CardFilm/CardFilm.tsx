@@ -1,24 +1,39 @@
-import React from 'react';
-import './CardFilm.scss';
-import { CardFilmProps } from './CardFilm.types';
-import IconSVG from '../IconSVG';
+import React from "react";
+import "./CardFilm.scss";
+import { CardFilmProps } from "./CardFilm.types";
+import IconSVG from "../IconSVG";
 
-const CardFilm: React.FC<CardFilmProps> = ({ topPosition, btnClose }) => {
+import plugMovieImg from "../../assets/img/plug-Movie.jpg";
 
-  
+const CardFilm: React.FC<CardFilmProps> = ({ data, topPosition, btnClose }) => {
+  return (
+    <a
+      href={`/data/${data.id}`}
+      className={`cardfilm   ${topPosition ? "cardfilm--show-top" : ""} `}
+      data-label={topPosition}
+      tabIndex={0}
+    >
+      {btnClose && (
+        <button className="cardfilm__btn-close">
+          <IconSVG icon="close" />
+        </button>
+      )}
 
-  return <a className= {`cardfilm   ${topPosition ? "cardfilm--show-top" : ""} `} data-label={topPosition} tabIndex={0}>
+      <div className="cardfilm__inner">
 
-    { btnClose && 
-    <button className='cardfilm__btn-close'>
-      <IconSVG icon='close' />
-    </button>
-    }
+        {!data.posterUrl && (
+          <h2 className="cardfilm__slug-heading">{data.title}</h2>
+        )}
 
-    <div className='cardfilm__inner'>
-      <img className='cardfilm__img' src="../../../src/assets/img/card2.jpg" alt="" />
+        <img
+          className="cardfilm__img"
+          src={data.posterUrl || plugMovieImg}
+          alt={data.title}
+        />
+
       </div>
-    </a>;
+    </a>
+  );
 };
 
 export default CardFilm;

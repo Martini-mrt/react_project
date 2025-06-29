@@ -4,4 +4,5 @@ export interface BtnProps {
   like?: boolean;
   type: "primary" | "default" | "onlyText" | "refresh" | "like";
   className?: string;
+  handleClick: () => void;
 }

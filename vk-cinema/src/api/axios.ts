@@ -1,42 +1,36 @@
 import axios from "axios";
-import { z } from "zod";
+// import { z } from "zod";
 
 // инициализируем Axios
 
+// ! на продакшине поменять!
 // https://cinemaguide.skillbox.cc'
 const serverAPI = "/api";
 
 export const apiClient = axios.create({
-    withCredentials: true,
   baseURL: serverAPI,
+  withCredentials: true,
   //   timeout: 8000,
-    // headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    // headers: { 'Content-Type': 'application/json' },
-  
+  // headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+  // headers: { 'Content-Type': 'application/json' },
 });
 
+// export const loginFetch = (email, password) => {
 
+// return fetch('https://cinemaguide.skillbox.cc/auth/login', {
+//   method: 'POST',
+//   headers: { 'Content-Type': 'application/json' },
+// //   headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+//   body: JSON.stringify(
+//     {
+//         email: "xxx@xxx.ru",
+//         password: "1234"
+//     }
+// ),
+//   credentials: 'include', // ⬅️ аналогично axios
+// });
 
-
-export const loginFetch = (email, password) => {
-
-return fetch('https://cinemaguide.skillbox.cc/auth/login', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-//   headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-  body: JSON.stringify( 
-    {
-        email: "xxx@xxx.ru", 
-        password: "1234"
-    }
-),
-  credentials: 'include', // ⬅️ аналогично axios
-});
-
-}  
-
-
-
+// }
 
 // ► Request‑перехватчик: токен авторизации
 // apiClient.interceptors.request.use((config) => {

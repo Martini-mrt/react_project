@@ -1,5 +1,5 @@
 import React from "react";
-import "./ListCard.scss";
+
 import { ListCardProps } from "./ListCard.types";
 import CardFilm from "../CardFilm";
 
@@ -9,60 +9,51 @@ import { useWindowWidth } from "../../hooks/useWindowWidth";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import { useTopTenMovies } from "../../hooks/Movie/useMovie";
+
+import "./ListCard.scss";
+import { useBreakpointsMap } from "../../hooks/useBreakpointValue";
+import { assertIsArray } from "../../utils/assertIsArray";
 
 // import '../../../node_modules/swiper/swiper.css';
 
-const arr = [
-  {
-    id: 1,
-  },
-  {
-    id: 2,
-  },
-  {
-    id: 3,
-  },
-  {
-    id: 4,
-  },
-  {
-    id: 5,
-  },
-  {
-    id: 6,
-  },
-  {
-    id: 7,
-  },
-  {
-    id: 8,
-  },
-  {
-    id: 9,
-  },
-  {
-    id: 10,
-  },
-];
+
 
 const ListCard: React.FC<ListCardProps> = ({ mode }) => {
 
-
-  const width = useWindowWidth();
+// сделать оптимизацию чтоб не рендерилась при изменении экрана
+//  const breackpointAddaptive = 1000;
+//   const width = useWindowWidth();
   // console.log(width);
+
+  const { data, error, isPending } = useTopTenMovies();
   
-  const breackpointAddaptive = 1000;
+  const cardList  = Array.isArray(data) ? data.slice(0, 10) : false;
+
+  // const arrCard = assertIsArray(data);
+ 
+  // console.log('ListCard => ', isPending, error)
+
+ const { lg } = useBreakpointsMap();
+   
+//  console.log(error)
+  
+ 
+ 
 
 
+// !проверка чтоб было только 10 карточек
   return (
     <div className="listcard">
-      {width > breackpointAddaptive ? (
+      {lg? (
         <ul className="container listcard__grid">
-          {arr.map((card, id) => (
-            <li className="listcard__item" key={id}>
-              <CardFilm topPosition={ mode === "top" ? id + 1 : false} btnClose={mode === "btnClose"} />
+
+          {cardList && cardList.map((card, id) => (
+            <li className="listcard__item" key={card.id}>
+              <CardFilm data={card} topPosition={ mode === "top" ? id + 1 : false} btnClose={mode === "btnClose"} />
             </li>
           ))}
+
         </ul>
       ) : (
      
@@ -74,9 +65,9 @@ const ListCard: React.FC<ListCardProps> = ({ mode }) => {
           onSwiper={(swiper) => console.log(swiper)}
         >
           
-          {arr.map((card, id) => (
+          {cardList && cardList.map((card, id) => (
             <SwiperSlide tag="li" className="listcard__item" key={id}>
-              <CardFilm topPosition={ mode === "top" ? id + 1 : false} btnClose={mode === "btnClose"} />
+              <CardFilm data={card} topPosition={ mode === "top" ? id + 1 : false} btnClose={mode === "btnClose"} />
             </SwiperSlide>
           ))}
         </Swiper>

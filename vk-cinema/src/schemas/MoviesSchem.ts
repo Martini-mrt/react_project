@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 
-export const movieSchema = z.object({
+export const MovieSchema = z.object({
     id: z.number(),
     genres: z.array(z.string()),
     backdropUrl: z.string().nullable(),
@@ -9,11 +9,22 @@ export const movieSchema = z.object({
     posterUrl: z.string().nullable(),
     trailerUrl: z.string(),
     title: z.string(),
+    releaseYear: z.number(),
+    tmdbRating: z.number(),
+    runtime: z.number(),
 });
 
 
+export const MoviesGenresSchema = z.array(z.string());
+
+export const MoviesSchemaList = z.array(MovieSchema);
+
+export const SuccessMovieSchema = z.union([ MovieSchema , MoviesSchemaList, MoviesGenresSchema]);
+
 // Тип, выводимый **автоматически** из схемы
-export type TMovie = z.infer<typeof movieSchema>;
+export type TMovie = z.infer<typeof MovieSchema>;
+
+// export type TMovieList = z.infer<typeof MoviesSchemaList>;
 
 
 

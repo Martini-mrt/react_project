@@ -1,6 +1,6 @@
 export interface InfoFilmProps {
   rating: number;
-  year?: string;  
-  genre?: string;
+  year?: number | undefined;  
+  genre?: string[];
   time?: string;
 }

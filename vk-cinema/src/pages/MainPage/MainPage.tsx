@@ -6,8 +6,8 @@ import Section from "../../layouts/Section";
 import ListCard from "../../components/ListCard";
 
 import BtnBox from "../../components/BtnBox";
-import { useGetMovieById } from "../../hooks/Movie/useGetMovieById";
-import { getMovie } from "../../api/movies";
+import { useGenresMovie, useGetMovieById, useMoviesByFilter } from "../../hooks/Movie/useMovie";
+import { getMovie, getMoviesByFilter } from "../../api/movies";
 import { createUser, getUserProfile, login, logout } from "../../api/User/User";
 import { loginFetch } from "../../api/axios";
 
@@ -33,25 +33,38 @@ const MainPage: React.FC = () => {
   // console.log(loginFetch("xxx@xxx.ru", "1234"))
 
 
+  //  console.log(logout())
+
+  // const {data , error, isPending} = useGetMovieById("13");
+
+  // const {data , error} = useGenresMovie();
+
+  // console.log(data, error)
+
 useEffect(() => {
-console.log(login("xxx@xxx.ru", "1234")) 
-// console.log(createUser("xxx@xxx.ru", "1234")); 
+// console.log(createUser("xxx2@xxx.ru", "1234", "Artem", "Артемович")); 
+
+// console.log(login("xxx2@xxx.ru", "1234")) 
+
+// console.log(getUserProfile())
+
+
 
 
 });
 
 
-// console.log(data?.title , isLoading, error)
+// console.log(getMovie('45174'))
 
- const [ test , setTest  ]  = useState("huy");
 
-getUserProfile().then(res => setTest(res.data.name))
 
-setTimeout(() => {
+
+
+// setTimeout(() => {
    
 
-  // console.log(getUserProfile()) 
-}, 2000);
+//   // console.log(getUserProfile()) 
+// }, 2000);
  
   return (
     <>
@@ -59,8 +72,8 @@ setTimeout(() => {
 
       {/*? hero возможно не layout! */}
        <HeroFilm name="ddd">
-        {test}
-            <BtnBox AllBtnShow={true} />
+    
+            
       </HeroFilm>
 
       <Section heading="Топ 10 фильмов" childrenInContainer={false}>

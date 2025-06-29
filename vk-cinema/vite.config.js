@@ -12,10 +12,10 @@ const __dirname = path.dirname(__filename)
 export default defineConfig({
   plugins: [react()],
   server: {
-    https: {
-      key: fs.readFileSync(path.resolve(__dirname, './ssl/localhost.key')),
-      cert: fs.readFileSync(path.resolve(__dirname, './ssl/localhost.crt')),
-    },
+    // https: {
+    //   key: fs.readFileSync(path.resolve(__dirname, './ssl/localhost.key')),
+    //   cert: fs.readFileSync(path.resolve(__dirname, './ssl/localhost.crt')),
+    // },
     port: 5173,
     proxy: {
       '/api': {
@@ -23,6 +23,11 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
       },
+      // '/translate': {
+      //   target: 'https://translate.googleapis.com',
+      //   changeOrigin: true,
+      //   rewrite: (path) => path.replace(/^\/translate/, '/translate'),
+      // },
     },
   },
 });

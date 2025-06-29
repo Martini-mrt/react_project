@@ -4,12 +4,15 @@ import { RatingProps } from "./Rating.types";
 import IconSVG from "../IconSVG";
 
 const Rating: React.FC<RatingProps> = ({ rating }) => {
+
+  //  rating = rating !== undefined ? rating : 0;
+
 // Определяем цвет по рейтингу
   let colorRating = '';
 
   if (rating <= 4.2) {
     colorRating = "red";
-  } else if (rating >= 4.2 && rating <= 6.3) {
+  } else if (rating >= 4.2 && rating <= 7.4) {
     colorRating = "grey";
   } else if (rating >= 7.5 && rating <= 8.6) {
     colorRating = "green";

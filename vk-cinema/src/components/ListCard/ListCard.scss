@@ -7,38 +7,34 @@
 
   &__grid {
     display: grid;
-    grid-template-columns: repeat(5,1fr);
-    grid-template-rows: repeat(2,1fr);
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, 1fr);
     row-gap: 64px;
     column-gap: clamp(20px, 2vw, 40px);
 
     // @include mixins.tablet {
-      
+
     //   grid-template-columns: repeat(2,40%);
     // grid-template-rows: repeat(5,1fr);
     // justify-content: center;
     // column-gap: 40px;
-    
+
     //  }
   }
-  
 
-  
-
- 
-   &__item {
-
+  &__item {
     display: flex;
     justify-content: center;
+height: auto;
 
-     //  Анимация
+    //  Анимация
     opacity: 0;
     transform: translateY(20px);
     animation: fadeInUp 0.5s forwards;
     animation-delay: 0.2s;
-   }
+  }
 
-   @keyframes fadeInUp {
+  @keyframes fadeInUp {
     to {
       opacity: 1;
       transform: translateY(0);
@@ -54,56 +50,54 @@
       width: 224px;
     }
   }
-
 }
 
 // .testSlider {
 
-  // width: 500px;
-  // height: 400px;
+// width: 500px;
+// height: 400px;
 
-  // padding: 5px;
-  
-  // padding-bottom: 500px;
-  // overflow-x: hidden;
-  // min-width: 375px;
+// padding: 5px;
 
-  // .swiper {
-  //   // overflow-x: hidden;
+// padding-bottom: 500px;
+// overflow-x: hidden;
+// min-width: 375px;
 
-  //   // ! решение!!!!!!
-  //   margin: -90px 0;
-  //   padding: 90px 0 90px 20px;
-  //   .swiper-wrapper {
-  //     // overflow: visible;
-  //     // overflow-y: visible;
-  //     width: 224px;
-  //   }
+// .swiper {
+//   // overflow-x: hidden;
 
-  //   .swiper-slide {
-  //     // overflow: visible;
-  //     // position: relative;
-  //     // z-index: 1;
-  //     // overflow-y: visible;
-  //   }
-    
-  // }
+//   // ! решение!!!!!!
+//   margin: -90px 0;
+//   padding: 90px 0 90px 20px;
+//   .swiper-wrapper {
+//     // overflow: visible;
+//     // overflow-y: visible;
+//     width: 224px;
+//   }
 
-  // &__slider {
-  //   // max-width: 500px;
-  //   // width: 100%;
-  //   // height: 40px;
-  //   // background-color: aqua;
+//   .swiper-slide {
+//     // overflow: visible;
+//     // position: relative;
+//     // z-index: 1;
+//     // overflow-y: visible;
+//   }
 
-  // }
+// }
 
+// &__slider {
+//   // max-width: 500px;
+//   // width: 100%;
+//   // height: 40px;
+//   // background-color: aqua;
 
-  // &__shad {
-  //   // border: 1px solid rgba(255, 255, 255, 0.25);
-  //   // border-radius: 16px;
-  
-  //   // box-shadow: 0 0 80px 0 rgba(255, 255, 255, 0.33);
-  //   // background: #c52f2f;
-  // } 
+// }
+
+// &__shad {
+//   // border: 1px solid rgba(255, 255, 255, 0.25);
+//   // border-radius: 16px;
+
+//   // box-shadow: 0 0 80px 0 rgba(255, 255, 255, 0.33);
+//   // background: #c52f2f;
+// }
 
 //  }
