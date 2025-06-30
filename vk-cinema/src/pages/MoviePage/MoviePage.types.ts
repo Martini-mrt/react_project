@@ -1,5 +1,5 @@
 // import { ReactNode } from 'react';
 
-export interface FilmPageProps {
+export interface MoviePageProps {
   // children?: ReactNode;
 }

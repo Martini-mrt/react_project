@@ -5,11 +5,9 @@
 import {
   MovieSchema,
   MoviesGenresSchema,
-  MoviesSchemaList,
-  SuccessMovieSchema,
-  TMovie,
+  MoviesSchemaList
 } from "../schemas/MoviesSchem";
-import { safeApiCall, SafeApiResult } from "../utils/safeApiCall";
+import { safeApiCall } from "../utils/safeApiCall";
 import { apiClient } from "./axios";
 import { ErrorUserAuthSchema } from "./User/User";
 

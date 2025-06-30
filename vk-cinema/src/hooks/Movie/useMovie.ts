@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { getGenresMovie, getMovie, getMoviesByFilter, getRandomMovie, getTopTenMovie, IGetMoviesByFilter } from "../../api/movies";
 import { wrapQueryFn } from "../../utils/wrapQueryFn";
-import { TMovie } from "../../schemas/MoviesSchem";
+
 
 
 

@@ -3,6 +3,7 @@ import "./MenuElement.scss";
 import { MenuElementProps } from "./MenuElement.types";
 import IconSVG from "../IconSVG";
 import Search from "../Search";
+import { NavLink, Link } from "react-router";
 
 
 
@@ -10,7 +11,8 @@ const MenuElement: React.FC<MenuElementProps> = ({
   text,
   typeElement,
   icon,
-  hideToMobile
+  hideToMobile,
+  to,
 }) => {
   switch (typeElement) {
     case "btn":
@@ -31,11 +33,11 @@ const MenuElement: React.FC<MenuElementProps> = ({
     case "link":
       return (
         <>
-          <a className="menuelement menuelement--desktop">{text}</a>
+          <NavLink to={to? to : ""} className="menuelement menuelement--desktop">{text}</NavLink>
           {!hideToMobile && (
-            <a className="menuelement menuelement--mobile" aria-label={text}>
+            <NavLink to={to? to : ""}  className="menuelement menuelement--mobile" aria-label={text}>
               {icon && <IconSVG icon={icon} className="menuelement__svg" />}
-            </a>
+            </NavLink>
           )}
         </>
       );

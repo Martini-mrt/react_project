@@ -4,6 +4,8 @@ import { BtnBoxProps } from "./BtnBox.types";
 import Btn from "../Btn/Btn";
 
 const BtnBox: React.FC<BtnBoxProps> = ({ AllBtnShow, handleRefetch }) => {
+  // AllBtnShow = false;
+  console.log(AllBtnShow)
   return (
     <div className={`btnbox ${!AllBtnShow ? "btnbox--no-wrap " : ""}`}>
       <Btn className="btnbox__btn-primary" text="Трейлер" type="primary" handleClick={() => console.log("Треллер")} />

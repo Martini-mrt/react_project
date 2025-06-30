@@ -17,13 +17,13 @@ const MenuList: React.FC<MenuListProps> = ({active}) => {
           {/* <a className="menulist__link" href="#">
             Главная
           </a> */}
-          <MenuElement typeElement="link" text="Главная" hideToMobile="true"/>
+          <MenuElement to={"/"} typeElement="link" text="Главная" hideToMobile="true"/>
         </li>
         <li className={`menulist__item ${active === 1 ? "active" : "" }`}>
           {/* <a className="menulist__link" href="#">
             Жанры
           </a> */}
-          <MenuElement typeElement="link" text="Жанры" icon="genre"/>
+          <MenuElement to={"/genre"} typeElement="link" text="Жанры" icon="genre"/>
         </li>
 
         <li className="menulist__item menulist__item--grow">

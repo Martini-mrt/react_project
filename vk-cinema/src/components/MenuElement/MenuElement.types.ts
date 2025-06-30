@@ -4,4 +4,5 @@ export interface MenuElementProps {
   typeElement: "btn"| "link" | "search" ;
   icon?: string;
   hideToMobile?: "true";
+  to?: string | undefined;
 }

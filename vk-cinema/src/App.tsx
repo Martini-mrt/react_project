@@ -1,41 +1,68 @@
 // import MainPage from "./pages/MainPage";
 
+import { Route, Routes } from "react-router";
 import Footer from "./components/Footer";
 import HeaderLayout from "./layouts/HeaderLayout";
 import SocialList from "./layouts/SocialList";
 import AccountPage from "./pages/AccountPage";
-import FilmPage from "./pages/FilmPage";
+import MoviePage from "./pages/MoviePage";
 import GenrePage from "./pages/GenrePage";
 import LoginPage from "./pages/LoginPage";
 import MainPage from "./pages/MainPage";
 import MoviesByGenrePage from "./pages/MoviesByGenrePage";
+import AppLayout from "./layouts/AppLayout";
+
+
+// link
+// <link to={'/link'}>name</link>
 
 
 
+// Hook
+// const navigate =useNavigate()
+// как работать с хуком
+// navigate("/link")
 
 
 function App() {
   return (
   
-    <>
-      <HeaderLayout />
-{/*  */}
-      <MainPage />
+// !перемииновать AccountPage в ProfilePages
 
-     {/* <GenrePage /> */}
+//!!!ПЕРЕДЕЛАТЬ КОМПОНЕНТ HERO вынести из него логику логика будет в mainPage - и переработать кнопки
+    <Routes>
+      <Route element={<AppLayout />} > 
 
-     {/* <MoviesByGenrePage /> */}
+      <Route path="/" element={<MainPage />} />
+      <Route path="/genre" element={<GenrePage />} />
+      <Route path="/genre/:genre" element={<MoviesByGenrePage />} />
+      <Route path="/movie/:id" element={<MoviePage />} />
 
-      {/* <FilmPage /> */}
+      <Route path="profile" element={<AccountPage />} />
+      <Route path="/login" element={<LoginPage />} />
+      
+      <Route path="*" element={<MainPage />} />
 
-      {/* <AccountPage /> */}
+      </Route> 
+    </Routes>
 
-      {/* <LoginPage /> */}
+    // <>
+    
 
-     <Footer>
-        <SocialList />
-      </Footer>
-    </>
+    //   <MainPage />
+
+    //  {/* <GenrePage /> */}
+
+    //  {/* <MoviesByGenrePage /> */}
+
+    //   {/* <FilmPage /> */}
+
+    //   {/* <AccountPage /> */}
+
+    //   {/* <LoginPage /> */}
+
+   
+    // </>
 
   );
 }

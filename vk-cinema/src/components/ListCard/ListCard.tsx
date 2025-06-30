@@ -3,7 +3,7 @@ import React from "react";
 import { ListCardProps } from "./ListCard.types";
 import CardFilm from "../CardFilm";
 
-import { useWindowWidth } from "../../hooks/useWindowWidth";
+// import { useWindowWidth } from "../../hooks/useWindowWidth";
 
 // import Swiper from "swiper";
 
@@ -13,7 +13,7 @@ import { useTopTenMovies } from "../../hooks/Movie/useMovie";
 
 import "./ListCard.scss";
 import { useBreakpointsMap } from "../../hooks/useBreakpointValue";
-import { assertIsArray } from "../../utils/assertIsArray";
+
 
 // import '../../../node_modules/swiper/swiper.css';
 

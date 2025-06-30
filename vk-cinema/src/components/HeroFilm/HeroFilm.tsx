@@ -29,7 +29,7 @@ const HeroFilm: React.FC<HeroFilmProps> = ({  }) => {
   
 //  console.log(translateText("hello")) 
 
-   console.log('Hero => ', data)
+  //  console.log('Hero => ', data)
 
   return (
     <section className="herofilm">
@@ -47,7 +47,7 @@ const HeroFilm: React.FC<HeroFilmProps> = ({  }) => {
           {/* подумать над обрезкой текста при адаптиве */}
           <p className="herofilm__description">{truncateText(data?.plot, 200)}</p>
 
-          <BtnBox AllBtnShow={true} handleRefetch={refetch} />
+          <BtnBox AllBtnShow={false} handleRefetch={refetch} />
         </div>
 
         <div className="herofilm__wrap-img">
