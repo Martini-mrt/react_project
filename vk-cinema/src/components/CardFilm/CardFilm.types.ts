@@ -6,6 +6,7 @@ export interface CardFilmProps {
   // children?: ReactNode;
   topPosition?: number | boolean;
   btnClose?: boolean;
+  onClose?: (id: string | number) => void;
   data: TMovie;
   // data: {
   //   id: number;

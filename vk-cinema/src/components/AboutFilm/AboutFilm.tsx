@@ -1,47 +1,38 @@
 import React from "react";
 import "./AboutFilm.scss";
 import { AboutFilmProps } from "./AboutFilm.types";
+import { translateLanguageCode } from "../../utils/translateLanguage";
 
-const AboutFilm: React.FC<AboutFilmProps> = ({ children }) => {
+const renderItem = (label: string, value?: React.ReactNode) => {
+  if (!value) return null;
   return (
-    <ul className="aboutfilm">
+    <li className="about-film__item">
+      <span className="about-film__label">{label}</span>
+      <span className="about-film__dashed"></span>
+      <span className="about-film__value">{value}</span>
+    </li>
+  );
+};
 
-  {/* адаптировать список через MAP */}
-      <li className="aboutfilm__item">
-        <span className="aboutfilm__label">Язык оригинала</span>
-        <span className="aboutfilm__dashed"></span>
-        <span className="aboutfilm__value">Русский</span>
-      </li>
+const AboutFilm: React.FC<AboutFilmProps> = ({ movieData }) => {
 
-      <li className="aboutfilm__item">
-        <span className="aboutfilm__label">Бюджет</span>
-        <span className="aboutfilm__dashed"></span>
-        <span className="aboutfilm__value">250 000 руб.</span>
-      </li>
+  if (!movieData) return null;
 
-      <li className="aboutfilm__item">
-        <span className="aboutfilm__label">Выручка</span>
-        <span className="aboutfilm__dashed"></span>
-        <span className="aboutfilm__value">2 835 000 руб.</span>
-      </li>
+  const { language, budget, revenue, director, production, awardsSummary } =
+    movieData || {};
 
-      <li className="aboutfilm__item">
-        <span className="aboutfilm__label">Режиссёр</span>
-        <span className="aboutfilm__dashed"></span>
-        <span className="aboutfilm__value">Игорь Масленников</span>
-      </li>
+    const lang = translateLanguageCode(language);
+    const budgetRender  = budget? Number(budget)?.toLocaleString("ru-RU") + " руб." : null;
+    const revenueRender = revenue? Number(revenue)?.toLocaleString("ru-RU") + " руб." : null;
 
-      <li className="aboutfilm__item">
-        <span className="aboutfilm__label">Продакшен</span>
-        <span className="aboutfilm__dashed"></span>
-        <span className="aboutfilm__value">Ленфильм</span>
-      </li>
-
-      <li className="aboutfilm__item">
-        <span className="aboutfilm__label">Награды</span>
-        <span className="aboutfilm__dashed"></span>
-        <span className="aboutfilm__value">Топ-250, 33 место</span>
-      </li>
+  return (
+    <ul className="about-film">
+      {renderItem("Язык оригинала", lang)}
+      {renderItem("Бюджет",  budgetRender)}
+      {renderItem("Выручка", revenueRender)}
+      {renderItem("Режиссёр", director)}
+      {renderItem("Продакшен", production)}
+      {renderItem("Награды", awardsSummary)}
     </ul>
   );
 };

@@ -1,61 +1,66 @@
 import React from "react";
 import "./HeroFilm.scss";
 import { HeroFilmProps } from "./HeroFilm.types";
-
-import img from "../../assets/img/hero.jpg";
-import InfoFilm from "../InfoFilm";
-import Btn from "../Btn";
-import BtnIcon from "../BtnIcon";
-import BtnLike from "../BtnLike -del";
-import { useRandomMovie } from "../../hooks/Movie/useMovie";
-import { TMovie } from "../../schemas/MoviesSchem";
-import { formatMinutesToHours } from "../../utils/formatMinutesToHours";
-
-import plugMovieImg from "../../assets/img/plug-Movie.jpg";
-import { truncateText } from "../../utils/truncateText";
 import BtnBox from "../BtnBox";
+import InfoFilm from "../InfoFilm";
+import { formatMinutesToHours } from "../../utils/formatMinutesToHours";
+import { truncateText } from "../../utils/truncateText";
+import plugMovieImg from "../../assets/img/plug-Movie.jpg";
 
-// ! меню хедера не соответвует макету
 
-const HeroFilm: React.FC<HeroFilmProps> = ({  }) => {
+// TODO подумать над обрезкой текста при адаптиве
 
-   const {data, error, isPending, refetch} = useRandomMovie();
-
-  //  setTimeout(() => {
-  //   refetch()
-  //  }, 5000);
-
-  //  const movie = data as TMovie | undefined;
-  
-//  console.log(translateText("hello")) 
-
-  //  console.log('Hero => ', data)
+const HeroFilm: React.FC<HeroFilmProps> = ({
+  movieData,
+  isSinglePage,
+  handleRefetch,
+  handleAboutFilm,
+  handleLike,
+  handleTriller,
+}) => {
+  const {
+    tmdbRating,
+    releaseYear,
+    genres,
+    runtime,
+    title,
+    plot,
+    backdropUrl,
+    posterUrl,
+  } = movieData || {};
 
   return (
-    <section className="herofilm">
-      <div className="container herofilm__container">
-        
-        <div className="herofilm__content">
+    <section className="hero-film">
+      <div className="container hero-film__container">
+        <div className="hero-film__content">
           <InfoFilm
-            rating={Number(data?.tmdbRating)}
-            year={data?.releaseYear}
-            genre={data?.genres}
-            time={formatMinutesToHours(data?.runtime)}
+            rating={Number(tmdbRating)}
+            year={releaseYear}
+            genre={genres}
+            time={formatMinutesToHours(runtime)}
           />
 
-          <h1 className="herofilm__heading">{data?.title}</h1>
-          {/* подумать над обрезкой текста при адаптиве */}
-          <p className="herofilm__description">{truncateText(data?.plot, 200)}</p>
+          <h1 className="hero-film__heading">{title}</h1>
+          <p className="hero-film__description">{truncateText(plot, 200)}</p>
 
-          <BtnBox AllBtnShow={false} handleRefetch={refetch} />
+          <BtnBox
+            isSingleMoviePage={isSinglePage}
+            handleRefetch={handleRefetch}
+            handleAboutFilm={handleAboutFilm}
+            handleLike={handleLike}
+            handleTriller={handleTriller}
+          />
         </div>
 
-        <div className="herofilm__wrap-img">
-          {  <img className="herofilm__img" src={data?.backdropUrl || data?.posterUrl || plugMovieImg} alt={data?.title} /> }
-          
-          {/* <img className="herofilm__img" src={img} alt={data?.title} /> */}
+        <div className="hero-film__wrap-img">
+          {
+            <img
+              className="hero-film__img"
+              src={backdropUrl || posterUrl || plugMovieImg}
+              alt={title || "Кадр из фильма"}
+            />
+          }
         </div>
-
       </div>
     </section>
   );

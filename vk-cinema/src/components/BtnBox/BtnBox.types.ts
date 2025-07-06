@@ -1,7 +1,7 @@
-import { ReactNode } from 'react';
-
 export interface BtnBoxProps {
-  children?: ReactNode;
-  AllBtnShow: boolean;
+  isSingleMoviePage?: boolean;
+  handleTriller?: () => void;
+  handleAboutFilm?: () => void;
+  handleLike?: () => void;
   handleRefetch?: () => void;
 }

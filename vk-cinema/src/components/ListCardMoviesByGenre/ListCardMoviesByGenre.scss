@@ -1,6 +1,6 @@
 @use "../../assets/styles/mixins";
 
-.listcardmoviesbygenre {
+.listCard-movies-genre {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   column-gap: clamp(10px, 3vw, 40px);
@@ -11,10 +11,12 @@
 
   @include mixins.tablet {
     grid-template-columns: repeat(3, 1fr);
+    row-gap: 32px;
   }
 
   @include mixins.mobile {
     grid-template-columns: repeat(2,1fr);
+    row-gap: 24px;
     padding-bottom: 40px;
   }
 

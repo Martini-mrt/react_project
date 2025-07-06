@@ -4,5 +4,7 @@ export interface BtnProps {
   like?: boolean;
   type: "primary" | "default" | "onlyText" | "refresh" | "like";
   className?: string;
-  handleClick: () => void;
+  // onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  onClick?: () => void;
+  isLoading?: boolean;
 }

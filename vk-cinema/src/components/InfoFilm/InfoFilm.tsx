@@ -5,14 +5,18 @@ import Rating from "../Rating";
 import { translateGenres } from "../../utils/translateGenres";
 
 const InfoFilm: React.FC<InfoFilmProps> = ({ rating, year, genre, time }) => {
+  const genres = Array.isArray(genre) ? translateGenres(genre) as string[] : [];
   return (
-    <div className="infofilm">
-      <Rating rating={rating} />
-      <span>{year}</span>
+    <div className="info-film">
 
-       {genre && translateGenres(genre).map((el, id) => (<span key={id}>{el}</span>))}
-      
-      <span>{time}</span>
+    {rating != null && <Rating rating={rating}/>}   
+
+    {year && <span title="Год выхода">{year}</span>}
+
+    {genres && genres.map((el, id) => (<span key={`${el}-${id}`}>{el}</span>))}
+    
+    {time && <span>{time}</span>}
+
     </div>
   );
 };

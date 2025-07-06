@@ -14,20 +14,25 @@ import { ErrorUserAuthSchema } from "./User/User";
 export interface IGetMoviesByFilter {
   genre?: string;
   title?: string;
-  maxCount?: number;
+  limit?: number;
+  page?: number;
 }
 
 // запрос и валидация Movies c фильтром запроса
 export const getMoviesByFilter = async ({
   genre,
   title,
-  maxCount = 20,
+  page,
+  // limit = 15,
+  limit,
 }: IGetMoviesByFilter = {}) => {
   // для сборки строки парметров
   const buildParamUrl = new URLSearchParams();
   if (genre) buildParamUrl.append("genre", genre);
   if (title) buildParamUrl.append("title", title);
-  if (maxCount) buildParamUrl.append("count", String(maxCount));
+  if (page) buildParamUrl.append("page", String(page));
+  if (limit) buildParamUrl.append("count", String(limit));
+  console.log(buildParamUrl.toString())
   return safeApiCall(
     () =>
       apiClient

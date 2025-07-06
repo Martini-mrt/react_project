@@ -2,56 +2,31 @@ import React from 'react';
 import './ListCardGenre.scss';
 import { ListCardGenreProps } from './ListCardGenre.types';
 import CardGenre from '../CardGenre';
+import { useGenresMovie } from '../../hooks/Movie/useMovie';
+import { translateGenres } from '../../utils/translateGenres';
 
 
-const arr = [
-  {
-    id: 1,
-    genre: "Драма"
-  },
-  {
-    id: 2,
-    genre: "Комедия"
-  },
-  {
-    id: 3,
-    genre: "Детектив"
-  },
-  {
-    id: 4,
-    genre: "Семейное"
-  },
-  {
-    id: 5,
-    genre: "Историческое"
-  },
-  {
-    id: 6,
-    genre: "Триллер"
-  },
-  {
-    id: 7,
-    genre: "Фантастика"
-  },
-  {
-    id: 8,
-    genre: "Приключения"
-  },
-
-  
-
-];
 
 const ListCardGenre: React.FC<ListCardGenreProps> = () => {
 
-  return  <ul className="container listcardgenre">
 
-  {arr.map((card, id) => (
+const {data, error, isPending} = useGenresMovie()
+
+
+// console.log(data, error, isPending)
+
+// translateGenres(card)
+
+  return ( <ul className="container listcardgenre">
+
+  {data && data.map((card, id) => (
     <li className="listcardgenre__item" key={id}>
-      <CardGenre heading={card.genre} />
+      <CardGenre genre={card} />
     </li>
   ))}
-  </ul>;
+  </ul>
+  );
+
 };
 
 export default ListCardGenre;

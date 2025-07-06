@@ -5,7 +5,7 @@ import HeroFilm from "../../components/HeroFilm";
 import AboutFilm from "../../components/AboutFilm";
 import Section from "../../layouts/Section";
 
-import BtnBox from "../../components/BtnBox";
+
 import { useGetMovieById } from "../../hooks/Movie/useMovie";
 import { useParams } from "react-router";
 
@@ -13,23 +13,28 @@ import { useParams } from "react-router";
 
 const MoviePage: React.FC<MoviePageProps> = () => {
  
-// нужно получить ID с хука
+
   const { id } = useParams();
-  console.log(id)
+
 
  const {data, error} =  useGetMovieById(id? id : "")
 
- console.log(data, error)
+//  console.log(data, error)
 
   return (
     <>
-      <HeroFilm name="ddd"/>
+      <HeroFilm
+        movieData={data}
+        isSinglePage={true}
+        handleLike={() => console.log("LIKE")}
+        handleTriller={() => console.log("TRILLER")}
+      />
             
 
       <Section heading="О фильме">
-        <div className="container">
-          <AboutFilm />
-        </div>
+        
+          <AboutFilm movieData={data} />
+        
       </Section>
     </>
   );

@@ -3,88 +3,28 @@ import './ListCardMoviesByGenre.scss';
 import { ListCardMoviesByGenreProps } from './ListCardMoviesByGenre.types';
 import CardFilm from '../CardFilm';
 import Btn from '../Btn';
+// import { useMoviesByFilter } from '../../hooks/Movie/useMovie';
 
-const arr = [
-  {
-    id: 1,
-    genre: "Драма"
-  },
-  {
-    id: 2,
-    genre: "Комедия"
-  },
-  {
-    id: 3,
-    genre: "Детектив"
-  },
-  {
-    id: 4,
-    genre: "Семейное"
-  },
-  {
-    id: 5,
-    genre: "Историческое"
-  },
-  {
-    id: 6,
-    genre: "Триллер"
-  },
-  {
-    id: 7,
-    genre: "Фантастика"
-  },
-  {
-    id: 8,
-    genre: "Приключения"
-  },
 
-  {
-    id: 9,
-    genre: "Триллер"
-  },
-  {
-    id: 10,
-    genre: "Фантастика"
-  },
-  {
-    id: 11,
-    genre: "Приключения"
-  },
-  {
-    id: 12,
-    genre: "Триллер"
-  },
-  {
-    id: 13,
-    genre: "Фантастика"
-  },
-  {
-    id: 14,
-    genre: "Приключения"
-  },
-  {
-    id: 15,
-    genre: "Триллер"
-  },
+
+const ListCardMoviesByGenre: React.FC<ListCardMoviesByGenreProps> = ({listCard , onLoadMore, isLoading}) => {
+
+
   
-];
 
-
-
-const ListCardMoviesByGenre: React.FC<ListCardMoviesByGenreProps> = () => {
   return (
     <>
-    <ul className="container listcardmoviesbygenre">
-  {arr.map((card, id) => (
-    // ! на 800 отоброжать 16 елементов на 400 15
-    <li className="listcardmoviesbygenre__item" key={id}>
-      <CardFilm  />
+    <ul className="container listCard-movies-genre">
+  {listCard && listCard.map((card, id) => (
+    
+    <li className="listCard-movies-genre__item" key={id}>
+      <CardFilm data={card} />
     </li>
   ))}
   </ul>
 
-<div className='container listcardmoviesbygenre__wrap-btn'>
-<Btn text='Показать еще' type='primary' />
+<div className='container listCard-movies-genre__wrap-btn'>
+<Btn text='Показать еще' type='primary' onClick={onLoadMore}  isLoading={isLoading} />
 </div>
    
    </>

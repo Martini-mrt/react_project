@@ -1,5 +1,8 @@
-import { ReactNode } from 'react';
+import { TMovie } from "../../schemas/MoviesSchem";
+
 
 export interface ListCardMoviesByGenreProps {
-  children?: ReactNode;
+  listCard?: TMovie[];
+  onLoadMore: () => void;
+  isLoading?: boolean;
 }

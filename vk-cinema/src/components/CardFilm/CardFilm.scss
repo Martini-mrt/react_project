@@ -1,6 +1,6 @@
 @use "../../assets/styles/mixins";
 
-.cardfilm {
+.card-film {
   position: relative;
   display: block;
   max-width: 335px;
@@ -66,7 +66,8 @@
     position: absolute;
     left: 90%;
     top: -5%;
-    display: grid;
+    z-index: 5;
+    display: none;
     place-items: center;
     width: 17%;
     height: 11%;
@@ -78,7 +79,25 @@
       opacity 0.3s ease-in-out,
       background-color 0.1s ease-in;
 
+
+      // !! сделать анимацию ховер появления кнопик закрыть
+        //  Анимация
+  //   opacity: 0.4;
+  //   transform: translateY(20px);
+  //   animation: fadeInUp 1s forwards;
+  //   animation-delay: 0.7s;
+
+
+
+  //    @keyframes fadeInUp {
+  //   to {
+  //     opacity: 1;
+  //     // transform: translateY(0);
+  //   }
+  // }
+
     &:hover {
+     
       background-color: var(--hoverColorMenu);
     }
 
@@ -88,6 +107,7 @@
   }
 
   &:hover &__btn-close {
+     display: grid;
     opacity: 1;
   }
 

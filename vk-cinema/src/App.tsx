@@ -29,7 +29,7 @@ function App() {
   
 // !перемииновать AccountPage в ProfilePages
 
-//!!!ПЕРЕДЕЛАТЬ КОМПОНЕНТ HERO вынести из него логику логика будет в mainPage - и переработать кнопки
+
     <Routes>
       <Route element={<AppLayout />} > 
 

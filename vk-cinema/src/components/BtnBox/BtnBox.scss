@@ -1,13 +1,13 @@
 @use "../../assets/styles/mixins";
 
-.btnbox {
+.btn-box {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 16px;
   padding-top: clamp(20px, 3vw, 54px);
 
-  &__btn-boxWrap {
+  &__wrap {
     display: flex;
     gap: 16px;
   }

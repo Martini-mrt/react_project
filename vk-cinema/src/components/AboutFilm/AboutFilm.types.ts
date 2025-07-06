@@ -1,5 +1,6 @@
-import { ReactNode } from 'react';
+import { TMovie } from "../../schemas/MoviesSchem";
+
 
 export interface AboutFilmProps {
-  children?: ReactNode;
+   movieData?: TMovie;
 }

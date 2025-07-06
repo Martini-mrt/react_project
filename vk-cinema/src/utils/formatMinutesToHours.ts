@@ -1,4 +1,4 @@
-export function formatMinutesToHours(minutes: number | undefined): string {
+export const formatMinutesToHours = (minutes: number | undefined): string =>{
   if (minutes) {
     const hours = Math.floor(minutes / 60);
     const mins = minutes % 60;

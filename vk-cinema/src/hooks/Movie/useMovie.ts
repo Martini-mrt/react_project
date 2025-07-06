@@ -1,23 +1,60 @@
-import { useQuery } from "@tanstack/react-query";
-import { getGenresMovie, getMovie, getMoviesByFilter, getRandomMovie, getTopTenMovie, IGetMoviesByFilter } from "../../api/movies";
+import { keepPreviousData, useQuery, UseQueryResult } from "@tanstack/react-query";
+import {
+  getGenresMovie,
+  getMovie,
+  getMoviesByFilter,
+  getRandomMovie,
+  getTopTenMovie,
+  IGetMoviesByFilter,
+} from "../../api/movies";
 import { wrapQueryFn } from "../../utils/wrapQueryFn";
+import { TMovie } from "../../schemas/MoviesSchem";
+import { queryClient } from "../../api/queryClient";
 
 
 
 
 
+// export const useMoviesByFilter = ({
+//   genre,
+//   title,
+//   page,
+//   limit,
+// }: IGetMoviesByFilter): UseQueryResult<TMovie[], Error> => {
+//   return useQuery<TMovie[], Error>({
+//     queryKey: ["moviesByGenre", genre, page],
+//     queryFn: wrapQueryFn(() => getMoviesByFilter({genre, page, limit, title})),
+//     placeholderData: keepPreviousData, // сохраняет старые данные при пагинации
+//   });
 
-export const useMoviesByFilter = (filter: IGetMoviesByFilter) => {
-  return useQuery({
-    queryKey: ["movie"],
-    queryFn: wrapQueryFn(() => getMoviesByFilter(filter)),
+
+
+export const useMoviesByFilter = ({
+  genre,
+  title,
+  page,
+  limit,
+}: IGetMoviesByFilter): UseQueryResult<TMovie[], Error> => {
+  return useQuery<TMovie[], Error>({
+    queryKey: ["moviesByGenre", genre, page],
+    queryFn: wrapQueryFn(() => getMoviesByFilter({genre, page, limit, title})),
+    // placeholderData: () =>
+      // queryClient.getQueryData<TMovie[]>(['moviesByGenre', genre, title, page - 1]) ?? [], // сохраняет старые данные при пагинации
+    // placeholderData: (previousData, previousQuery) => { console.log(previousData)  },
   });
+
 };
 
 export const useTopTenMovies = () => {
+  // data.slice(0, 10)
+  // console.log(getTopTenMovie())
   return useQuery({
     queryKey: ["top", "10"],
-    queryFn: wrapQueryFn(getTopTenMovie)
+    // queryFn: wrapQueryFn(getTopTenMovie)
+    queryFn: async () => {
+      const movies = await wrapQueryFn(getTopTenMovie)(); // movies: Movie[]
+      return Array.isArray(movies) ? movies.slice(0, 10) : [];
+    },
   });
 };
 
@@ -33,7 +70,6 @@ export const useGetMovieById = (id: string) => {
     queryKey: ["movie", id],
     queryFn: wrapQueryFn(() => getMovie(id)),
     enabled: !!id, // не запрашивать, пока нет id
-  
   });
 };
 
@@ -43,23 +79,6 @@ export const useRandomMovie = () => {
     queryFn: wrapQueryFn(getRandomMovie),
   });
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // import { useQuery } from "@tanstack/react-query";
 // import { getMovie, getTopTenMovie, getRandomMovie } from "../../api/movies";

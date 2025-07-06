@@ -1,5 +1,6 @@
-.cardgenre {
+.card-genre {
   display: block;
+  width: 100%;
   min-width: 176px;
   max-width: 670px;
   border-radius: 24px;
@@ -8,6 +9,7 @@
   box-shadow: 0 0 80px 0 rgba(255, 255, 255, 0.33);
 
   &__img {
+    width: 100%;
   }
 
   &__content {

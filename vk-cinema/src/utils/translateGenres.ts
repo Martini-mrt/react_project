@@ -21,6 +21,15 @@ const genreTranslations: Record<string, string> = {
   adventure: "приключения",
 };
 
-export const translateGenres = (genres: string[]): string[] => {
-  return genres.map((genre) => genreTranslations[genre] || genre);
-}
+export const translateGenres = (
+  genres: string[] | string
+): string[] | string => {
+
+  // переводим в все сиволы в нижний регистр
+  const translate = (genre: string) =>
+    genreTranslations[genre.toLowerCase()] || genre;
+
+  // return  Array.isArray(genres) ? genres.map((genre) => genreTranslations[genre] || genre) : genreTranslations[genres] || genres;
+  // возврашаем или массив жанров или строку с жанром 
+  return Array.isArray(genres) ? genres.map(translate) : translate(genres);
+};

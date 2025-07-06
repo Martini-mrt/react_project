@@ -10,8 +10,11 @@ const AppLayout: React.FC<AppLayoutProps> = () => {
   return (
     <>
       <HeaderLayout />
-      
-      <Outlet />
+
+      <main>
+        <Outlet />
+      </main>
+     
 
       <Footer>
         <SocialList />

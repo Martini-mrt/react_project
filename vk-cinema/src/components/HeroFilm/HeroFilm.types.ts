@@ -1,6 +1,10 @@
-import { ReactNode } from 'react';
+import { TMovie } from "../../schemas/MoviesSchem";
 
 export interface HeroFilmProps {
-  children?: ReactNode;
-  name: string;
+  movieData: TMovie | undefined;
+  isSinglePage?: boolean;
+  handleRefetch?: () => void;
+  handleAboutFilm?: () => void;
+  handleLike?: () => void;
+  handleTriller?: () => void;
 }

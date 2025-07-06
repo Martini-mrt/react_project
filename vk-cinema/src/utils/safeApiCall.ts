@@ -26,9 +26,11 @@ export async function safeApiCall<TSuccess, TError = unknown>(
       return { data: parsed.data, error: null };
     }
 
+    console.log(parsed.error.errors)
     return {
       data: null,
       error: "Неверный формат данных от сервера",
+      // error: parsed.error.errors
     };
   } catch (error) {
     if (axios.isAxiosError(error)) {

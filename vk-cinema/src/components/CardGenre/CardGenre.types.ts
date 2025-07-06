@@ -1,5 +1,5 @@
 
 
 export interface CardGenreProps {
-  heading: string;
+  genre: string;
 }

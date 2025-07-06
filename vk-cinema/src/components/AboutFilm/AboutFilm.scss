@@ -1,6 +1,6 @@
 @use "../../assets/styles/mixins";
 
-.aboutfilm {
+.about-film {
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -48,6 +48,6 @@
   }
 
   &__value {
-    white-space: nowrap;
+    // white-space: nowrap;
   }
 }
