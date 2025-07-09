@@ -6,6 +6,7 @@ import InfoFilm from "../InfoFilm";
 import { formatMinutesToHours } from "../../utils/formatMinutesToHours";
 import { truncateText } from "../../utils/truncateText";
 import plugMovieImg from "../../assets/img/plug-Movie.jpg";
+import { useAddToFavorites } from "../../hooks/favorites/useFavorites";
 
 
 // TODO подумать над обрезкой текста при адаптиве
@@ -19,6 +20,7 @@ const HeroFilm: React.FC<HeroFilmProps> = ({
   handleTriller,
 }) => {
   const {
+    id,
     tmdbRating,
     releaseYear,
     genres,
@@ -28,6 +30,8 @@ const HeroFilm: React.FC<HeroFilmProps> = ({
     backdropUrl,
     posterUrl,
   } = movieData || {};
+
+  const { mutate } = useAddToFavorites();
 
   return (
     <section className="hero-film">
@@ -47,7 +51,7 @@ const HeroFilm: React.FC<HeroFilmProps> = ({
             isSingleMoviePage={isSinglePage}
             handleRefetch={handleRefetch}
             handleAboutFilm={handleAboutFilm}
-            handleLike={handleLike}
+            handleLike={() => mutate(String(id))}
             handleTriller={handleTriller}
           />
         </div>

@@ -1,4 +1,4 @@
-import { TMovie } from "../../schemas/MoviesSchem";
+import { TMovie } from "../../api/Schema/MoviesSchem";
 
 
 export interface AboutFilmProps {

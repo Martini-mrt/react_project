@@ -7,14 +7,10 @@ import Btn from '../Btn';
 
 
 
-const ListCardMoviesByGenre: React.FC<ListCardMoviesByGenreProps> = ({listCard , onLoadMore, isLoading}) => {
-
-
-  
-
+const ListCardMoviesByGenre: React.FC<ListCardMoviesByGenreProps> = ({listCard , onLoadMore, isLoading, isShowBtn}) => {
   return (
     <>
-    <ul className="container listCard-movies-genre">
+    <ul className="listCard-movies-genre">
   {listCard && listCard.map((card, id) => (
     
     <li className="listCard-movies-genre__item" key={id}>
@@ -24,7 +20,7 @@ const ListCardMoviesByGenre: React.FC<ListCardMoviesByGenreProps> = ({listCard ,
   </ul>
 
 <div className='container listCard-movies-genre__wrap-btn'>
-<Btn text='Показать еще' type='primary' onClick={onLoadMore}  isLoading={isLoading} />
+{ isShowBtn &&  <Btn text='Показать еще' type='primary' onClick={onLoadMore}  isLoading={isLoading}  /> }
 </div>
    
    </>

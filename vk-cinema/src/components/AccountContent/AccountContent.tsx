@@ -6,10 +6,12 @@ import Btn from "../Btn";
 const AccountContent: React.FC<AccountContentProps> = ({
   children,
   className,
+  handleLogout
 }) => {
-  return <div className={`accountcontent ${className}`}>
+  return <div className={`account-content ${className}`}>
     {children}
-    <Btn className="accountcontent__btn" type="primary" text="Выйти из аккаунта"/>
+    
+    <Btn className="account-content__btn" type="primary" text="Выйти из аккаунта" onClick={handleLogout}/>
     </div>;
 };
 

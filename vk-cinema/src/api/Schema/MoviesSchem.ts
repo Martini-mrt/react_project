@@ -18,7 +18,6 @@ export const MovieSchema = z.object({
   awardsSummary: z.string().nullable(),
   budget: z.string().nullable(),
   revenue: z.string().nullable(),
-  // country: z.string(),
 });
 
 export const MoviesGenresSchema = z.array(z.string());

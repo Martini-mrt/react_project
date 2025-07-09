@@ -1,0 +1,14 @@
+.success-windows-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__description {
+    text-align: center;
+    max-width: 340px;
+    color: var(--ColorBlack);
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 133%;
+  }
+}

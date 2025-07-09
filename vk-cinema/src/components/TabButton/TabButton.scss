@@ -23,6 +23,7 @@
   }
 
   &__svg path {
+    fill: var(--ColorWhite);
     transition: fill 0.3s ease;
   }
 

@@ -6,16 +6,16 @@ import IconSVG from '../IconSVG';
 const AccountItem: React.FC<AccountItemProps> = ({ icon, iconText , label, value }) => {
 
 
-  return <div className="accountitem">
+  return <div className="account-item">
       
-      <div className='accountitem__ico'>
-        {icon && <IconSVG className="accountitem__svg" icon={icon} />}  
+      <div className='account-item__ico'>
+        {icon && <IconSVG className="account-item__svg" icon={icon} />}  
          {iconText && iconText}
       </div>
 
-      <div className='accountitem__content'>
-        <div className='accountitem__label'>{label}</div>
-        <div className='accountitem__value'>{value}</div>
+      <div className='account-item__content'>
+        <div className='account-item__label'>{label}</div>
+        <div className='account-item__value'>{value}</div>
       </div>
 
   </div>;

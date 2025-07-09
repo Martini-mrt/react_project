@@ -6,10 +6,11 @@ import {
   MovieSchema,
   MoviesGenresSchema,
   MoviesSchemaList
-} from "../schemas/MoviesSchem";
-import { safeApiCall } from "../utils/safeApiCall";
-import { apiClient } from "./axios";
-import { ErrorUserAuthSchema } from "./User/User";
+} from "../Schema/MoviesSchem";
+import { safeApiCall } from "../../utils/safeApiCall";
+import { apiClient } from "../axios";
+import { ErrorSchema } from "../Schema/ErrorSchem";
+
 
 export interface IGetMoviesByFilter {
   genre?: string;
@@ -39,7 +40,7 @@ export const getMoviesByFilter = async ({
         .get(`/movie?${buildParamUrl.toString()}`)
         .then((res) => res.data),
     MoviesSchemaList,
-    ErrorUserAuthSchema
+    ErrorSchema
   );
 };
 
@@ -48,7 +49,7 @@ export const getTopTenMovie = async () => {
   return safeApiCall(
     () => apiClient.get("/movie/top10").then((res) => res.data),
     MoviesSchemaList,
-    ErrorUserAuthSchema
+    ErrorSchema
   );
 };
 
@@ -57,7 +58,7 @@ export const getGenresMovie = async () => {
   return safeApiCall(
     () => apiClient.get("/movie/genres").then((res) => res.data),
     MoviesGenresSchema,
-    ErrorUserAuthSchema
+    ErrorSchema
   );
 };
 
@@ -66,7 +67,7 @@ export const getMovie = async (id: string) => {
   return safeApiCall(
     () => apiClient.get(`/movie/${id}`).then((res) => res.data),
     MovieSchema,
-    ErrorUserAuthSchema
+    ErrorSchema
   );
 };
 
@@ -75,7 +76,7 @@ export const getRandomMovie = async ()=> {
   return safeApiCall(
     () => apiClient.get("/movie/random").then((res) => res.data),
     MovieSchema,
-    ErrorUserAuthSchema
+    ErrorSchema
   );
 };
 

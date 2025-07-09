@@ -1,10 +1,45 @@
+@use "../../assets/styles/mixins";
+
 .info-film {
   display: flex;
   align-items: center;
   justify-content: start;
   gap: 16px;
+  // width: 100%;
+  max-width: 84%;
 
-  font-size:  clamp(14px, 4vw,18px);
+  font-size: clamp(14px, 4vw, 18px);
   color: var(--textColorWO);
 
+// @include mixins.tablet {
+//       max-width: clamp(320px, 4vw, 500px);
+//   }
+@include mixins.mobile {
+      max-width: clamp(320px, 87vw, 500px);
+  }
+// @include mixins.mobile-M {
+//       max-width: 200px;
+//   }
+
+//   @include mixins.mobile-S {
+//       max-width: 320px;
+//   }
+
+  &__wrap-genres {
+    display: flex;
+    gap: 16px;
+    // width: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    &::-webkit-scrollbar {
+      display: none; /* Chrome, Safari, Opera */
+    }
+  }
+
+  &__time {
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
 }

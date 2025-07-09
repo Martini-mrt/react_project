@@ -7,6 +7,8 @@ body {
   // height: 100vh;
   height: 100%;
   background: linear-gradient(180deg, #0a192c 0%, #39384a 100%);
+   
+  background-color: aqua;
 
   color: var(--textColor);
   font-family: "Play", sans-serif;
@@ -30,6 +32,7 @@ body {
   display: grid;
   grid-template-rows: auto 1fr auto; /* header, content, footer */
   min-height: 100vh;
+  // background: linear-gradient(180deg, #0a192c 0%, #39384a 100%);
 }
 
 // .container {

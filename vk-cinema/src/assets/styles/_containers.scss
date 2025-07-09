@@ -21,16 +21,15 @@
 
 @include mixins.tablet {
 	.container {
-	// padding: 0 72px;
-	padding: 0 20px;
-	max-width: 100%;
+		// padding: 0 72px;
+		padding: 0 20px;
+		max-width: 100%;
 	}
 }
 
 @include mixins.mobile {
 	// 375 в макете
 	.container {
-	min-width: 375px;
+		min-width: 335px;
 	}
 }
-

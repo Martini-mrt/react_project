@@ -16,6 +16,7 @@ export default defineConfig({
     //   key: fs.readFileSync(path.resolve(__dirname, './ssl/localhost.key')),
     //   cert: fs.readFileSync(path.resolve(__dirname, './ssl/localhost.crt')),
     // },
+    host: true, // 👈 разрешает доступ по IP
     port: 5173,
     proxy: {
       '/api': {

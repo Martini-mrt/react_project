@@ -7,11 +7,11 @@ import { queryClient } from "./api/queryClient.ts";
 import { BrowserRouter } from "react-router";
 
 createRoot(document.getElementById("root")!).render(
-  // <StrictMode>
+  <StrictMode>
     <BrowserRouter>
     <QueryClientProvider client={queryClient}>
       <App />
     </QueryClientProvider>
     </BrowserRouter>
-  //  </StrictMode>
+   </StrictMode> 
 );

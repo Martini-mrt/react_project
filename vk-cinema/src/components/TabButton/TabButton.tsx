@@ -12,7 +12,7 @@ const TabButton: React.FC<TabButtonProps> = ({ btnBuild, index, isActive,onClick
   const breackpointAddaptive = 800;
 
   // let title:string | undefined ;
-  console.log(size);
+  // console.log(size);
 
   const title =
     size <= breackpointAddaptive ? btnBuild.mobileTitle : btnBuild.title;

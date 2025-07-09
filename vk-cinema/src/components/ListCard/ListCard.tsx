@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import { ListCardProps } from "./ListCard.types";
 import CardFilm from "../CardFilm";
@@ -9,13 +9,12 @@ import CardFilm from "../CardFilm";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import { useTopTenMovies } from "../../hooks/Movie/useMovie";
+// import { useTopTenMovies } from "../../hooks/Movie/useMovie";
 
 import "./ListCard.scss";
 import { useBreakpointsMap } from "../../hooks/useBreakpointValue";
 
 // import '../../../node_modules/swiper/swiper.css';
-
 
 // !Лучше использовать isTop и isClosable вместо mode === 'top' / 'btnClose'.
 
@@ -25,13 +24,11 @@ import { useBreakpointsMap } from "../../hooks/useBreakpointValue";
 
 // TODO сделай memo низацию
 
-const ListCard: React.FC<ListCardProps> = ({ mode }) => {
+const ListCard: React.FC<ListCardProps> = ({ mode, listCard, onClose }) => {
   // сделать оптимизацию чтоб не рендерилась при изменении экрана
   //  const breackpointAddaptive = 1000;å
   //   const width = useWindowWidth();
   // console.log(width);
-
-  const { data, error, isPending } = useTopTenMovies();
 
   // const cardList = Array.isArray(data) ? data.slice(0, 10) : false;
 
@@ -43,7 +40,6 @@ const ListCard: React.FC<ListCardProps> = ({ mode }) => {
 
   //  console.log(data)
   // console.log(error);
-
 
   // const onClickCard = (event: MouseEvent): void => {
 
@@ -69,10 +65,11 @@ const ListCard: React.FC<ListCardProps> = ({ mode }) => {
     <div className="listcard">
       {lg ? (
         <ul className="container listcard__grid">
-          {data &&
-            data.map((card, id) => (
-              <li className="listcard__item" key={card.id} >
+          {listCard &&
+            listCard.map((card, id) => (
+              <li className="listcard__item" key={card.id}>
                 <CardFilm
+                  onClose={onClose}
                   data={card}
                   topPosition={mode === "top" ? id + 1 : false}
                   btnClose={mode === "btnClose"}
@@ -88,10 +85,11 @@ const ListCard: React.FC<ListCardProps> = ({ mode }) => {
           onSlideChange={() => console.log("slide change")}
           onSwiper={(swiper) => console.log(swiper)}
         >
-          {data &&
-            data.map((card, id) => (
+          {listCard &&
+            listCard.map((card, id) => (
               <SwiperSlide tag="li" className="listcard__item" key={card.id}>
                 <CardFilm
+                onClose={onClose}
                   data={card}
                   topPosition={mode === "top" ? id + 1 : false}
                   btnClose={mode === "btnClose"}

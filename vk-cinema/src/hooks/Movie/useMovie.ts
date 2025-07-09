@@ -1,4 +1,4 @@
-import { keepPreviousData, useQuery, UseQueryResult } from "@tanstack/react-query";
+import { useQuery, UseQueryResult } from "@tanstack/react-query";
 import {
   getGenresMovie,
   getMovie,
@@ -6,27 +6,9 @@ import {
   getRandomMovie,
   getTopTenMovie,
   IGetMoviesByFilter,
-} from "../../api/movies";
+} from "../../api/movie/movies";
 import { wrapQueryFn } from "../../utils/wrapQueryFn";
-import { TMovie } from "../../schemas/MoviesSchem";
-import { queryClient } from "../../api/queryClient";
-
-
-
-
-
-// export const useMoviesByFilter = ({
-//   genre,
-//   title,
-//   page,
-//   limit,
-// }: IGetMoviesByFilter): UseQueryResult<TMovie[], Error> => {
-//   return useQuery<TMovie[], Error>({
-//     queryKey: ["moviesByGenre", genre, page],
-//     queryFn: wrapQueryFn(() => getMoviesByFilter({genre, page, limit, title})),
-//     placeholderData: keepPreviousData, // сохраняет старые данные при пагинации
-//   });
-
+import { TMovie } from "../../api/Schema/MoviesSchem";
 
 
 export const useMoviesByFilter = ({
@@ -80,50 +62,3 @@ export const useRandomMovie = () => {
   });
 };
 
-// import { useQuery } from "@tanstack/react-query";
-// import { getMovie, getTopTenMovie, getRandomMovie } from "../../api/movies";
-// import { TMovie } from "../../types/movie";
-
-// // Запрос фильма по ID
-// export const useGetMovieById = (id: string) => {
-//   return useQuery<TMovie>({
-//     queryKey: ["movie", id],
-//     queryFn: async () => {
-//       const { data, error } = await getMovie(id);
-//       if (error) throw new Error(typeof error === "string" ? error : "Ошибка API");
-//       return data;
-//     },
-//     enabled: !!id, // чтобы не вызывался без ID
-//   });
-// };
-
-// // Топ 10 фильмов
-// export const useTopTenMovies = () => {
-//   return useQuery<TMovie[]>({
-//     queryKey: ["top", "10"],
-//     queryFn: async () => {
-//       const { data, error } = await getTopTenMovie();
-//       if (error) throw new Error(typeof error === "string" ? error : "Ошибка API");
-//       return data;
-//     },
-//   });
-// };
-
-// // Случайный фильм
-// export const useRandomMovie = () => {
-//   return useQuery<TMovie>({
-//     queryKey: ["movie", "random"],
-//     queryFn: async () => {
-//       const { data, error } = await getRandomMovie();
-//       if (error) throw new Error(typeof error === "string" ? error : "Ошибка API");
-//       return data;
-//     },
-//   });
-// };
-
-// // Общий экспорт (не обязательно, но удобно)
-// export const useMovie = {
-//   byId: useGetMovieById,
-//   topTen: useTopTenMovies,
-//   random: useRandomMovie,
-// };

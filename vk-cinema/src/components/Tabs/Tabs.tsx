@@ -14,7 +14,7 @@ const Tabs: React.FC<TabsProps> = ({ children }) => {
   // создаем массив заголовков из label вложенных tab
   const tabTitles = children.map((child) => child.props.btnBuild);
 
-  console.log(tabTitles);
+  // console.log(tabTitles);
 
   return (
   

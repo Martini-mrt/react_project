@@ -10,7 +10,7 @@ const CardFilm: React.FC<CardFilmProps> = ({ data, topPosition, btnClose, onClos
   const onDeleteClick = (event: MouseEvent) => {
     event.preventDefault();
     event.stopPropagation(); 
-    onClose?.(data.id);
+    onClose?.(String(data.id));
     console.log("Удалить => ",data.id)
   }
 

@@ -7,8 +7,7 @@
   max-width: 600px;
   width: 100%;
 
-
-@include mixins.mobile {
+  @include mixins.mobile {
     max-width: 100%;
   }
 
@@ -49,5 +48,8 @@
 
   &__value {
     // white-space: nowrap;
+    @include mixins.mobile {
+      max-width: 68%;
+    }
   }
 }

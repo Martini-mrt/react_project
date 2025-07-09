@@ -7,11 +7,9 @@ import { useParams } from "react-router";
 import { useMoviesByFilter } from "../../hooks/Movie/useMovie";
 import { translateGenres } from "../../utils/translateGenres";
 import { capitalize } from "../../utils/capitalize";
-import { TMovie } from "../../schemas/MoviesSchem";
+import { TMovie } from "../../api/Schema/MoviesSchem";
 
-// ? BACKEND тупит вторит данные если меняешь сnраницы и колличество в них, нужно было 15 получить и 10 прибавлять карт
-// ? сделал 15 получаем и 15 прибаляем
-// ! не понятно что должен вернуть бек чтоб скрыть кнопку "еще"
+
 
 const MoviesByGenrePage: React.FC<MoviesByGenrePageProps> = () => {
   const { genre } = useParams();
@@ -24,7 +22,7 @@ const MoviesByGenrePage: React.FC<MoviesByGenrePageProps> = () => {
   const { data, error, isSuccess, isLoading } = useMoviesByFilter({
     genre,
     page,
-    limit: 15,
+    limit: 10,
   });
 
   // 👇 добавление новых фильмов к текущему списку
@@ -34,6 +32,8 @@ const MoviesByGenrePage: React.FC<MoviesByGenrePageProps> = () => {
     }
   }, [data, isSuccess]);
 
+   const showBtn = !(!data || data.length === 0);
+
   const handleLoadMore = () => {
     // setLimit(5);
     setPage((prev) => prev + 1);
@@ -41,7 +41,7 @@ const MoviesByGenrePage: React.FC<MoviesByGenrePageProps> = () => {
 
   // console.log(page)
 
-  console.log(data, error, isLoading);
+  // console.log(data, error, isLoading);
 
   // btnMore={}
 
@@ -51,6 +51,7 @@ const MoviesByGenrePage: React.FC<MoviesByGenrePageProps> = () => {
         listCard={movies}
         onLoadMore={handleLoadMore}
         isLoading={isLoading}
+        isShowBtn={showBtn}
       />
     </SectionList>
   );
