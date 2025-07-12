@@ -1,8 +1,9 @@
+import { ButtonHTMLAttributes } from "react";
 
-export interface BtnProps {
+export interface BtnProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   text?: string;
   like?: boolean;
-  type: "primary" | "default" | "onlyText" | "refresh" | "like";
+  styleBtn: "primary" | "default" | "onlyText" | "refresh" | "like";
   className?: string;
   // onClick?: React.MouseEventHandler<HTMLButtonElement>;
   onClick?: () => void;

@@ -2,7 +2,8 @@ import { z } from "zod";
 
 
 export const ErrorSchema = z.object({
-  error: z.string() || z.boolean,
+  result: z.boolean(),
+  // result: z.string(),
 });
 
 export type TErrorSchema = z.infer<typeof ErrorSchema>;

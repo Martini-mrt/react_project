@@ -7,7 +7,7 @@ import {
   getTopTenMovie,
   IGetMoviesByFilter,
 } from "../../api/movie/movies";
-import { wrapQueryFn } from "../../utils/wrapQueryFn";
+// import { wrapQueryFn } from "../../utils/wrapQueryFn";
 import { TMovie } from "../../api/Schema/MoviesSchem";
 
 
@@ -19,7 +19,7 @@ export const useMoviesByFilter = ({
 }: IGetMoviesByFilter): UseQueryResult<TMovie[], Error> => {
   return useQuery<TMovie[], Error>({
     queryKey: ["moviesByGenre", genre, page],
-    queryFn: wrapQueryFn(() => getMoviesByFilter({genre, page, limit, title})),
+    queryFn: () => getMoviesByFilter({genre, page, limit, title}),
     // placeholderData: () =>
       // queryClient.getQueryData<TMovie[]>(['moviesByGenre', genre, title, page - 1]) ?? [], // сохраняет старые данные при пагинации
     // placeholderData: (previousData, previousQuery) => { console.log(previousData)  },
@@ -34,7 +34,7 @@ export const useTopTenMovies = () => {
     queryKey: ["top", "10"],
     // queryFn: wrapQueryFn(getTopTenMovie)
     queryFn: async () => {
-      const movies = await wrapQueryFn(getTopTenMovie)(); // movies: Movie[]
+      const movies = await getTopTenMovie(); // movies: Movie[]
       return Array.isArray(movies) ? movies.slice(0, 10) : [];
     },
   });
@@ -43,14 +43,14 @@ export const useTopTenMovies = () => {
 export const useGenresMovie = () => {
   return useQuery({
     queryKey: ["movie", "genres"],
-    queryFn: wrapQueryFn(getGenresMovie),
+    queryFn: getGenresMovie,
   });
 };
 
 export const useGetMovieById = (id: string) => {
   return useQuery({
     queryKey: ["movie", id],
-    queryFn: wrapQueryFn(() => getMovie(id)),
+    queryFn: () => getMovie(id),
     enabled: !!id, // не запрашивать, пока нет id
   });
 };
@@ -58,7 +58,7 @@ export const useGetMovieById = (id: string) => {
 export const useRandomMovie = () => {
   return useQuery({
     queryKey: ["movie", "random"],
-    queryFn: wrapQueryFn(getRandomMovie),
+    queryFn: getRandomMovie,
   });
 };
 

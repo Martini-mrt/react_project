@@ -20,7 +20,7 @@ const ListCardMoviesByGenre: React.FC<ListCardMoviesByGenreProps> = ({listCard ,
   </ul>
 
 <div className='container listCard-movies-genre__wrap-btn'>
-{ isShowBtn &&  <Btn text='Показать еще' type='primary' onClick={onLoadMore}  isLoading={isLoading}  /> }
+{ isShowBtn &&  <Btn text='Показать еще' styleBtn='primary' onClick={onLoadMore}  isLoading={isLoading}  /> }
 </div>
    
    </>

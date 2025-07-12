@@ -2,6 +2,8 @@
 * Обертка для useQuery {queryFn: () => {} } должен возвращать data и error
 */
 
+// ! удалить не нужно
+
 import { SafeApiResult } from "./safeApiCall";
 
 

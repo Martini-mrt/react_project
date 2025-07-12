@@ -7,7 +7,7 @@ const SuccessWindowsContent: React.FC<SuccessWindowsContentProps> = ({ message ,
   return (
     <div className='success-windows-content'>
     {message && <p className='success-windows-content__description'>{message}</p> }
-    <Btn type="primary" text="Войти" onClick={onActionsBtn} />
+    <Btn styleBtn="primary" text="Войти" type='button' onClick={onActionsBtn} />
     </div>
   )
 };

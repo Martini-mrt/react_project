@@ -28,17 +28,18 @@
 
 
   &__input {
+    width: 100%;
     font-weight: 400;
     font-size: 18px;
     line-height: 133%;
     color: var(--ColorBlack);
   }
  
-  &.inputform--error {
+  &.input-form--error {
       border: 1px solid var(--errorColor);
   }
 
-&.inputform--error &__svg {
+&.input-form--error &__svg {
       fill: var(--errorColor);
   }
 

@@ -206,7 +206,7 @@ const IconSVG: React.FC<IconSVGProps> = ({ icon, className }) => {
         </svg>
       );
 
-    case "mail":
+    case "email":
       return (
         <svg
           className={className}

@@ -4,12 +4,14 @@ import { ListCardGenreProps } from './ListCardGenre.types';
 import CardGenre from '../CardGenre';
 // import { useGenresMovie } from '../../hooks/Movie/useMovie';
 import { translateGenres } from '../../utils/translateGenres';
+import { useGenresMovie } from '../../hooks/Movie/useMovie';
 
 
 
 const ListCardGenre: React.FC<ListCardGenreProps> = () => {
 
 
+// todo вынести выше этот хук
 const {data, error, isPending} = useGenresMovie()
 
 
@@ -17,10 +19,10 @@ const {data, error, isPending} = useGenresMovie()
 
 // translateGenres(card)
 
-  return ( <ul className="listcardgenre">
+  return ( <ul className="list-card-genre">
 
   {data && data.map((card, id) => (
-    <li className="listcardgenre__item" key={id}>
+    <li className="list-card-genre__item" key={id}>
       <CardGenre genre={card} />
     </li>
   ))}

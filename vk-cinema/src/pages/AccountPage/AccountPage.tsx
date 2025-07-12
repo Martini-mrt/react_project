@@ -18,6 +18,7 @@ import {
   useGetFavorites,
 } from "../../hooks/favorites/useFavorites";
 import { useNavigate } from "react-router";
+import { capitalize } from "../../utils/capitalize";
 
 // TODO сделать модель фаворите
 
@@ -47,9 +48,15 @@ const Account: React.FC<AccountProps> = () => {
 
   //  console.log( mutate("98"))
   //
-  const bio = profileData && `${profileData?.name} ${profileData?.surname}`;
 
+  // console.log(favorites)
 
+  const name = profileData?.name || [""];
+  const surname = profileData?.surname || [""];
+
+  const bio = `${name} ${surname}`.trim();
+
+  const initials = name[0].toUpperCase() + surname[0].toUpperCase();
 
   const handleLogout = () => {
     logout();
@@ -69,7 +76,11 @@ const Account: React.FC<AccountProps> = () => {
           }}
         >
           {favorites && (
-            <ListCard mode="btnClose" listCard={favorites} onClose={delFavorite} />
+            <ListCard
+              mode="btnClose"
+              listCard={favorites}
+              onClose={delFavorite}
+            />
           )}
         </Tab>
 
@@ -82,11 +93,15 @@ const Account: React.FC<AccountProps> = () => {
         >
           <AccountContent className="container" handleLogout={handleLogout}>
             {bio && (
-              <AccountItem iconText="KK" label="Имя Фамилия" value={bio} />
+              <AccountItem
+                iconText={initials}
+                label="Имя Фамилия"
+                value={bio}
+              />
             )}
             {profileData?.email && (
               <AccountItem
-                icon="mail"
+                icon="email"
                 label="Электронная почта"
                 value={profileData?.email}
               />

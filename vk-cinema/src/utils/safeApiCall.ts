@@ -1,132 +1,54 @@
 import { ZodSchema } from "zod";
 import axios from "axios";
+import { ApiError } from "./apiError";
 
-export type SafeApiSuccess<T> = {
-  data: T;
-  error: null;
-};
+// export type SafeApiSuccess<T> = {
+//   data: T;
+//   // error: null;
+// };
 
-export type SafeApiFailure<E> = {
-  data: null;
-  error: E | string;
-};
+// export type SafeApiFailure<E> = {
+//   data: null;
+//   error: E | string;
+// };
 
-export type SafeApiResult<T, E = unknown> = SafeApiSuccess<T> | SafeApiFailure<E>;
+// export type SafeApiResult<T> =
+//   | SafeApiSuccess<T>;
+//   // | SafeApiFailure<E>;
 
 export async function safeApiCall<TSuccess, TError = unknown>(
   request: () => Promise<unknown>,
   successSchema: ZodSchema<TSuccess>,
   errorSchema?: ZodSchema<TError>
-): Promise<SafeApiResult<TSuccess, TError>> {
+): Promise<TSuccess> {
   try {
     const raw = await request();
 
     const parsed = successSchema.safeParse(raw);
-    if (parsed.success) {
-      return { data: parsed.data, error: null };
-    }
 
-    console.log(parsed.error.errors)
-    return {
-      data: null,
-      error: "Неверный формат данных от сервера",
-      // error: parsed.error.errors
-    };
-  } catch (error) {
+    if (!parsed.success) throw new Error("Некорректные данные от сервера");
+
+    return parsed.data;
+  } catch (error: unknown) {
+    
     if (axios.isAxiosError(error)) {
       const serverError = error?.response?.data;
 
       if (errorSchema) {
         const parsedError = errorSchema.safeParse(serverError);
-        if (parsedError.success) {
-          return {
-            data: null,
-            error: parsedError.data,
-          };
-        }
-      }
 
-      return {
-        data: null,
-        error: error.message || "Ошибка запроса",
-      };
+        if (!parsedError.success)
+          throw new ApiError("Некорректные данные от сервера");
+      }
     }
 
-    return {
-      data: null,
-      error: "Непредвиденная ошибка",
-    };
-  }
-}
-
-
-
-
-
-// import { ZodSchema } from "zod";
-// import axios from "axios";
-
-// export type SafeApiResult<T> =
-//   | { data: T; error: null; }
-//   | { data: null; error: T | string; };
-
-// //    | { data: null; error: string };
-
-// export async function safeApiCall<TSuccess, TError >(
-//   request: () => Promise<unknown>,
-//   successSchema: ZodSchema<TSuccess>,
-//   errorSchema?: ZodSchema<TError>
-// ): Promise<SafeApiResult<TSuccess | TError>> {
-//   try {
-//     const res = await request();
-
-// // console.log(successSchema.parse(res))
-
-//     const parsed = successSchema.safeParse(res);
-//     // const parsed = successSchema.parse(res);
-
-//     // console.log("Пришло с сервера => ", res)
-//     if (parsed.success) {
-//       return { data: parsed.data, error: null};
-//     }
+    // Обработка прочих ошибок
+    if (error instanceof Error) throw new ApiError(error.message);
     
-//     // return { data: res, error: parsed};
-//     return { data: null, error: "Неверный формат данных от сервера" };
-//   } catch (err) {
+  }
 
-//     // console.log(err)
-
-//     if (axios.isAxiosError(err)) {
-//       const errorData = err?.response?.data;
-
-//       if (errorSchema) {
-//         const parsed = errorSchema.safeParse(errorData);
-//         if (parsed.success) {
-            
-//           return { data: null , error: parsed.data };
-//         }
-//       }
-
-//       return { data: null, error: err.message || "Ошибка запроса" };
-//     }
-
-//     return { data: null, error: "Непредвиденная ошибка" };
-//   }
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-// улучьшенная функция
+  throw new ApiError("Неизвестная ошибка");
+}
 
 // import { ZodSchema } from "zod";
 // import axios from "axios";
@@ -141,7 +63,9 @@ export async function safeApiCall<TSuccess, TError = unknown>(
 //   error: E | string;
 // };
 
-// export type SafeApiResult<T, E = unknown> = SafeApiSuccess<T> | SafeApiFailure<E>;
+// export type SafeApiResult<T, E = unknown> =
+//   | SafeApiSuccess<T>
+//   | SafeApiFailure<E>;
 
 // export async function safeApiCall<TSuccess, TError = unknown>(
 //   request: () => Promise<unknown>,
@@ -157,22 +81,35 @@ export async function safeApiCall<TSuccess, TError = unknown>(
 //       return { data: parsed.data, error: null };
 //     }
 
+//     console.log(parsed.error.errors);
 //     return {
 //       data: null,
 //       error: "Неверный формат данных от сервера",
+//       // error: parsed.error.errors
 //     };
 //   } catch (error) {
 //     if (axios.isAxiosError(error)) {
 //       const serverError = error?.response?.data;
 
+//       // console.log(serverError)
+
 //       if (errorSchema) {
 //         const parsedError = errorSchema.safeParse(serverError);
+
+//        console.log(parsedError)
+
 //         if (parsedError.success) {
+//           // console.log("данные отб ошибке пришли",parsedError.data)
 //           return {
 //             data: null,
 //             error: parsedError.data,
 //           };
 //         }
+
+//         return {
+//           data: null,
+//           error: "Неверный формат данных от сервера в ответе об ошибке",
+//         };
 //       }
 
 //       return {

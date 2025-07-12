@@ -1,5 +1,9 @@
-import axios from "axios";
-// import { z } from "zod";
+import axios, { AxiosError } from "axios";
+import { ApiError } from "../utils/apiError";
+
+
+
+
 
 // инициализируем Axios
 
@@ -14,6 +18,72 @@ export const apiClient = axios.create({
   // headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
   // headers: { 'Content-Type': 'application/json' },
 });
+
+
+// const setupAxiosInterceptors = (apiClient: typeof axios) => {
+  apiClient.interceptors.response.use(
+    (response) => response,
+    (error: AxiosError) => {
+      if (axios.isAxiosError(error) && error.response) {
+        const status = error.response.status;
+
+        let message = "Произошла неизвестная ошибка";
+
+        switch (status) {
+          case 400:
+            message = "Неверный логин или пароль.";
+            break;
+          case 401:
+            message = "Вы не авторизованы. Пожалуйста, войдите в аккаунт.";
+            break;
+          case 403:
+            message = "У вас нет прав для выполнения этого действия.";
+            break;
+          case 404:
+            message = "Ресурс не найден.";
+            break;
+          case 409:
+            message = "Такой пользователь уже существует.";
+            break;
+          case 422:
+            message = "Ошибка валидации. Проверьте введённые данные.";
+            break;
+          case 500:
+            message = "Ошибка сервера. Попробуйте позже.";
+            break;
+          case 503:
+            message = "Сервер временно недоступен.";
+            break;
+        }
+
+        // Можно показать уведомление, лог, или пробросить дальше
+        // console.error(`Ошибка ${status}: ${message}`);
+
+        // Пробрасываем ошибку дальше, с кастомным сообщением
+        return Promise.reject(new ApiError(message, status));
+      }
+
+      return Promise.reject(error);
+    }
+  );
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // export const loginFetch = (email, password) => {
 

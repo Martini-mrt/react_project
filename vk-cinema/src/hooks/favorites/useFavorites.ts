@@ -1,6 +1,6 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { addToFavorites, deleteFavorites, getFavorites } from "../../api/favorites/favorites";
-import { wrapQueryFn } from "../../utils/wrapQueryFn";
+// import { wrapQueryFn } from "../../utils/wrapQueryFn";
 // import { TMovie } from "../../api/Schema/MoviesSchem";
 import { queryClient } from "../../api/queryClient";
 
@@ -12,13 +12,13 @@ import { queryClient } from "../../api/queryClient";
 export const useGetFavorites = () => {
   return useQuery({
     queryKey: ["favorites", "get"],
-    queryFn: wrapQueryFn(getFavorites),
+    queryFn: getFavorites,
   });
 };
 
 export const useDeleteFavorites = () => {
   return useMutation({
-    mutationFn: (id: string) => wrapQueryFn(() => deleteFavorites(id))(),
+    mutationFn: (id: string) => deleteFavorites(id),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["favorites", "get"] });
     },
@@ -27,7 +27,7 @@ export const useDeleteFavorites = () => {
 
 export const useAddToFavorites = () => {
   return useMutation({
-    mutationFn: (id: string) => wrapQueryFn(() => addToFavorites(id))(),
+    mutationFn: (id: string)  => addToFavorites(id),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["favorites", "get"] });
     },

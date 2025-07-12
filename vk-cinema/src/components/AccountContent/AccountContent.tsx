@@ -11,7 +11,7 @@ const AccountContent: React.FC<AccountContentProps> = ({
   return <div className={`account-content ${className}`}>
     {children}
     
-    <Btn className="account-content__btn" type="primary" text="Выйти из аккаунта" onClick={handleLogout}/>
+    <Btn className="account-content__btn" styleBtn="primary" text="Выйти из аккаунта" onClick={handleLogout}/>
     </div>;
 };
 

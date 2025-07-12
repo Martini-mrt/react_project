@@ -10,4 +10,10 @@
     gap: 24px;
     margin-top: 24px;
   }
+
+  &__error-field {
+    min-height: 24px;
+    text-align: center;
+    color: var(--errorColor);
+  }
 }

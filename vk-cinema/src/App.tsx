@@ -39,7 +39,7 @@ function App() {
       <Route path="/movie/:id" element={<MoviePage />} />
 
 {/* создать прослойку элемент проверяюший авторизацию */}
-      <Route path="profile" element={<AccountPage />} />
+      <Route path="/profile" element={<AccountPage />} />
       <Route path="/login" element={<LoginPage />} />
       
       <Route path="*" element={<MainPage />} />

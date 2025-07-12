@@ -5,13 +5,13 @@ import IconSVG from "../IconSVG";
 
 // TODO потом улучьшить компонент
 
-const Btn: React.FC<BtnProps> = ({ text, type, like, className = "", onClick , isLoading}) => {
-  switch (type) {
+const Btn: React.FC<BtnProps> = ({ text, styleBtn, like, className = "", onClick , isLoading, ...props}) => {
+  switch (styleBtn) {
     case "primary":
     case "default":
     case "onlyText":
       return (
-        <button className={`btn ${type} ${className}`} type="button" onClick={onClick}>
+        <button className={`btn ${styleBtn} ${className}`}  onClick={onClick}  {...props}>
           {isLoading ? 'Загрузка...' : text}
         </button>
       );
