@@ -5,13 +5,13 @@ import IconSVG from '../IconSVG';
 
 
 
-const BtnRound: React.FC<BtnRoundProps> = ({icon, size = "m", className}) => {
+const BtnRound: React.FC<BtnRoundProps> = ({icon, size = "m", className, ...props}) => {
 
 
 
 
   return (
-  <button className={`btnround btnround--${size} ${className}`}>
+  <button className={`btnround btnround--${size} ${className}`} {...props}>
  <IconSVG className="btnround__svg" icon={icon}/>
 </button>);
 };

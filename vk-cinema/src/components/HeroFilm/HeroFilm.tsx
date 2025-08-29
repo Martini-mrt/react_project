@@ -51,7 +51,8 @@ const HeroFilm: React.FC<HeroFilmProps> = ({
             isSingleMoviePage={isSinglePage}
             handleRefetch={handleRefetch}
             handleAboutFilm={handleAboutFilm}
-            handleLike={() => mutate(String(id))}
+            // handleLike={() => mutate(String(id))}
+            handleLike={handleLike}
             handleTriller={handleTriller}
           />
         </div>

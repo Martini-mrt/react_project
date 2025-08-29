@@ -5,4 +5,7 @@ export interface MenuElementProps {
   icon?: string;
   hideToMobile?: "true";
   to?: string | undefined;
+  onClick?: ()=> void;
+  active?: boolean;
+
 }

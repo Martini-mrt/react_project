@@ -7,10 +7,10 @@ import IconSVG from "../IconSVG";
 import BtnRound from "../BtnRound";
 import Btn from "../Btn";
 
-const ModalWindows: React.FC<ModalWindowsProps> = ({  heading, children}) => {
+const ModalWindows: React.FC<ModalWindowsProps> = ({  heading, children, onCloseModal}) => {
   return <div className="modal-windows">
 
-<BtnRound className="modal-windows__close-btn" icon="close" size="m"/>
+<BtnRound className="modal-windows__close-btn" icon="close" size="m" onClick={onCloseModal}/>
 
 <div className="modal-windows__wrap-logo">
    <img className="modal-windows__logo" src={logo} alt="Логотип маруся" />

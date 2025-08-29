@@ -1,30 +1,30 @@
 import React from "react";
-import "./AccountPage.scss";
-import { AccountProps } from "./AccountPage.types";
+import "./ProfilePage.scss";
+import { ProfileProps } from "./ProfilePage.types";
 import Section from "../../layouts/Section";
 import ListCard from "../../components/ListCard";
 import Tabs, { Tab } from "../../components/Tabs";
 import AccountContent from "../../components/AccountContent";
 import AccountItem from "../../components/AccountItem";
 import { useUserLogout, useUserProfile } from "../../hooks/User/useUser";
-import { createUser, login } from "../../api/User/User";
-import {
-  addToFavorites,
-  deleteFavorites,
-  getFavorites,
-} from "../../api/favorites/favorites";
+// import { createUser, login } from "../../api/User/User";
+// import {
+//   addToFavorites,
+//   deleteFavorites,
+//   getFavorites,
+// } from "../../api/favorites/favorites";
 import {
   useDeleteFavorites,
   useGetFavorites,
 } from "../../hooks/favorites/useFavorites";
 import { useNavigate } from "react-router";
-import { capitalize } from "../../utils/capitalize";
+// import { capitalize } from "../../utils/capitalize";
 
 // TODO сделать модель фаворите
 
 //Todo доделать избранное хуки добавить в избранное
 
-const Account: React.FC<AccountProps> = () => {
+const Account: React.FC<ProfileProps> = () => {
   // !должна быть проверка на логин
 
   // console.log(createUser("mrt9","1","MyName","MySurname"))

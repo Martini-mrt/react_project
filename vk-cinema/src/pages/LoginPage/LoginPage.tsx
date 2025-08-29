@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import "./LoginPage.scss";
 import { LoginPageProps } from "./LoginPage.types";
-import Owerlay from "../../layouts/Owerlay";
+import Overlay from "../../layouts/Overlay";
 import ModalWindows from "../../components/ModalWindows";
 import FormLogin from "../../components/Form/FormLogin";
 import FormRegistration from "../../components/Form/FormRegistration";
 import SuccessWindowsContent from "../../components/SuccessWindowsContent";
+import Portal from "../../components/Portal";
 
 const LoginPage: React.FC<LoginPageProps> = ({ children }) => {
   const [step, setStep] = useState<"login" | "register" | "success">("login");
@@ -41,23 +42,11 @@ const LoginPage: React.FC<LoginPageProps> = ({ children }) => {
   const heading = headingMap[step];
 
   return (
-    <Owerlay>
-      <ModalWindows heading={heading}>
-        {renderContent()}
-
-        {/* <FormLogin onGoToReg={() => console.log("wedfewwefw")} /> */}
-
-        {/* {contentWindows.element} */}
-
-        {/* <FormLogin /> */}
-
-        {/* <FormRegistration /> */}
-
-        {/* <p className='modal-windows__description'>
-     Используйте вашу электронную почту для входа
-    </p> */}
-      </ModalWindows>
-    </Owerlay>
+    <Portal className="portal-overlay">
+      {/* <Overlay> */}
+        <ModalWindows heading={heading}>{renderContent()}</ModalWindows>
+      {/* </Overlay> */}
+    </Portal>
   );
 };
 

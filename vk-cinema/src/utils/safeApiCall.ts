@@ -50,6 +50,21 @@ export async function safeApiCall<TSuccess, TError = unknown>(
   throw new ApiError("Неизвестная ошибка");
 }
 
+
+
+// todo Упростить валидацию :
+
+// export const validate = <T>(schema: z.ZodType<T>, data: unknown): T => {
+//   const parsed = schema.safeParse(data);
+//   if (!parsed.success) throw new Error('Validation error');
+//   return parsed.data;
+// };
+
+// todo возможно так будет проше в success и error - отбьединить в union в типах
+
+
+
+
 // import { ZodSchema } from "zod";
 // import axios from "axios";
 

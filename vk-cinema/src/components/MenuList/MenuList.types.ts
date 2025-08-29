@@ -1,4 +1,4 @@
 
 export interface MenuListProps {
-  active?: number;
+  // active?: number;
 }

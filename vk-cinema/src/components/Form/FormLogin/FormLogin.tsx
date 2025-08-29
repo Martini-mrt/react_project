@@ -18,6 +18,8 @@ import { useUserLogin } from "../../../hooks/User/useUser";
 // вывод ошибок в форму
 
 const FormLogin: React.FC<FormLoginProps> = ({ onGoToReg }) => {
+  const { mutate, error } = useUserLogin();
+
   const { register, handleSubmit, formState } = useForm<TFormLoginSchema>({
     resolver: zodResolver(FormLoginSchema),
   });
@@ -25,16 +27,14 @@ const FormLogin: React.FC<FormLoginProps> = ({ onGoToReg }) => {
   const { errors } = formState;
   // console.log(errors);
 
-  const {mutate, error} = useUserLogin();
+  console.log(error?.message);
 
- console.log(error?.message)
-
-  const errorMessage = errors?.email?.message || errors?.password?.message || error?.message;
+  const errorMessage =
+    errors?.email?.message || errors?.password?.message || error?.message;
 
   const onSubmit: SubmitHandler<TFormLoginSchema> = (data) => {
     // console.log(data);
-    mutate(data)
-     
+    mutate(data);
   };
 
   return (

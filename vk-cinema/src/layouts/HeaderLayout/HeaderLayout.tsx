@@ -13,7 +13,7 @@ const HeaderLayout: React.FC<HeaderLayoutProps> = () => {
       <div className="container headerlayout__container">
         <Logo />
         <nav className="headerlayout__nav">
-          <MenuList active={0} />
+          <MenuList />
           {/* <Search /> */}
         </nav>
         

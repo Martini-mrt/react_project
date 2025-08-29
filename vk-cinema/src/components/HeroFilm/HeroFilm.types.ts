@@ -5,6 +5,7 @@ export interface HeroFilmProps {
   isSinglePage?: boolean;
   handleRefetch?: () => void;
   handleAboutFilm?: () => void;
-  handleLike?: (id: string) => void;
+  // handleLike?: (id: string) => void;
+    handleLike?: () => void;
   handleTriller?: () => void;
 }

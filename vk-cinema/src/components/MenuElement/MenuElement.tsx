@@ -13,12 +13,13 @@ const MenuElement: React.FC<MenuElementProps> = ({
   icon,
   hideToMobile,
   to,
+  ...props
 }) => {
   switch (typeElement) {
     case "btn":
       return (
         <>
-          <button className="menuelement menuelement--desktop">{text}</button>
+          <button className="menuelement menuelement--desktop" {...props}>{text}</button>
           {!hideToMobile && (
             <button
               className="menuelement menuelement--mobile"
@@ -33,7 +34,7 @@ const MenuElement: React.FC<MenuElementProps> = ({
     case "link":
       return (
         <>
-          <NavLink to={to? to : ""} className="menuelement menuelement--desktop">{text}</NavLink>
+          <NavLink to={to? to : ""} className="menuelement menuelement--desktop" {...props}>{text}</NavLink>
           {!hideToMobile && (
             <NavLink to={to? to : ""}  className="menuelement menuelement--mobile" aria-label={text}>
               {icon && <IconSVG icon={icon} className="menuelement__svg" />}
@@ -42,12 +43,13 @@ const MenuElement: React.FC<MenuElementProps> = ({
         </>
       );
 
+      // ! search нужно вынести отдельнфй компонент
     case "search":
       return (
         <>
           <Search hideToMobile="true" />
 
-          <button className="menuelement menuelement--mobile" aria-label={text}>
+          <button className="menuelement menuelement--mobile" aria-label={text} {...props}>
             {icon && <IconSVG icon={icon} className="menuelement__svg" />}
           </button>
         </>

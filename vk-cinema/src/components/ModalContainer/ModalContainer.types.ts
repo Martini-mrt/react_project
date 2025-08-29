@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
 
-export interface AccountProps {
+export interface ModalContainerProps {
   children?: ReactNode;
 }

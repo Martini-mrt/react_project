@@ -20,17 +20,6 @@ export const useUserLogout = () => {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
 export const useUserProfile = () => {
   return useQuery({
     queryKey: ["user", "profile"],
@@ -60,15 +49,6 @@ export const useUserLogin = () => {
   // },
   });
 };
-
-
-
-
-
-
-
-
-
 
 
 export const useUserRegistrations = (handleSuccess?: ()=> void) => {

@@ -17,7 +17,7 @@ const BtnBox: React.FC<BtnBoxProps> = ({
       <Btn
         className="btn-box__btn-primary"
         text="Трейлер"
-        typeBtn="primary"
+        styleBtn="primary"
         onClick={handleTriller}
       />
 
@@ -25,17 +25,17 @@ const BtnBox: React.FC<BtnBoxProps> = ({
         <Btn
           className="btn-box__btn-default"
           text="О фильме"
-          typeBtn="default"
+          styleBtn="default"
           onClick={handleAboutFilm}
         />
       )}
 
       <div className="btn-box__wrap">
         {/* здесь состояни лайка */}
-        <Btn typeBtn="like" like={false} onClick={handleLike} />
+        <Btn styleBtn="like" like={false} onClick={handleLike} />
 
         {!isSingleMoviePage && (
-          <Btn typeBtn="refresh" onClick={handleRefetch} />
+          <Btn styleBtn="refresh" onClick={handleRefetch} />
         )}
       </div>
     </div>
