@@ -1,10 +1,11 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { createUser, getUserProfile, login, logout } from "../../api/User/User";
+import { createUser, fetchMe, getUserProfile, login, logout } from "../../api/User/User";
 import { wrapQueryFn } from "../../utils/wrapQueryFn";
 import { ApiError } from "../../utils/apiError";
+import { queryClient } from "../../api/queryClient";
 
 
-
+// todo передалать хуки подстроить под Авторизацию !!!!
 
 
 // export const useUserLogout = () => {
@@ -16,6 +17,10 @@ import { ApiError } from "../../utils/apiError";
 export const useUserLogout = () => {
   return useMutation({
     mutationFn: logout,
+    onSuccess: () => {
+      console.log("logout")
+      queryClient.removeQueries({queryKey: ["auth", "me"]}); 
+    }
   });
 };
 
@@ -24,6 +29,14 @@ export const useUserProfile = () => {
   return useQuery({
     queryKey: ["user", "profile"],
     queryFn: getUserProfile,
+  });
+};
+
+export const useUserMe = () => {
+  return useQuery({
+    queryKey: ["auth", "me"],
+    queryFn: fetchMe,
+    retry: false,
   });
 };
 
@@ -40,6 +53,10 @@ export const useUserLogin = () => {
   return useMutation({
     mutationKey: ["auth", "login"],
     mutationFn: ({ email, password }: { email: string; password: string }) => login(email, password),
+    onSuccess: (data) => {
+      console.log(data)
+      queryClient.setQueryData(["auth","me"], data)
+    }
   //    onError: (error) => {
   //   // An error happened!
   //   // console.log(error.status)
@@ -74,3 +91,6 @@ export const useUserRegistrations = (handleSuccess?: ()=> void) => {
 
 
 };
+
+
+

@@ -22,7 +22,7 @@ const MainPage: React.FC<MainPageProps> = ({onFav}) => {
   // const { id } = useParams();
   const navigate = useNavigate();
 
-  console.log("render");
+  // console.log("render");
 
   const { data: movieRandom, refetch } = useRandomMovie();
 

@@ -45,9 +45,9 @@ function App() {
 // const [isLoginOpen, setLoginOpen] = useState(false);
 
 
-const { data  } = useUserProfile();
+// const { data  } = useUserProfile();
   
-console.log("app =>",data)
+// console.log("app =>",data)
 
   return (
   

@@ -1,20 +1,21 @@
 import React from "react";
 import "./Login.scss";
 import { LoginProps } from "./Login.types";
-import { useUserProfile } from "../../hooks/User/useUser";
+import { useUserMe, useUserProfile } from "../../hooks/User/useUser";
 import { capitalize } from "../../utils/capitalize";
 import { useDispatch } from "react-redux";
 import { openAuthModal } from "../../store/sliceModal";
+import { useNavigate } from "react-router";
 
 const Login: React.FC<LoginProps> = ({ children }) => {
   // блок входа потм убрать
   //  const mutate = useUserLogin();
-
+const navigate = useNavigate();
   //todo нужно узнать аторизован ли пользователь
 
-  const userProfile = useUserProfile();
+  const userProfile = useUserMe();
 
-
+  console.log(userProfile);
 
 // меняем данные стейта
   const dispatch = useDispatch();
@@ -31,13 +32,6 @@ const Login: React.FC<LoginProps> = ({ children }) => {
 
   //  const { data  } = useUserProfile();
 
-
-
-
-
-
-  console.log(userProfile);
-
   let text = "Войти";
   let typeElement = "btn";
   let onClick = ()=>{};
@@ -47,11 +41,13 @@ const Login: React.FC<LoginProps> = ({ children }) => {
 
   //  console.log(className)
   // userProfile.isSuccess
+  console.log("render")
   if (userProfile.isSuccess) {
-    text = capitalize(userProfile.data.name);
+    text = capitalize(userProfile.data.name) + "rrr";
     typeElement = "link";
   } else {
-   onClick = () => dispatch(openAuthModal())
+  //  onClick = () => dispatch(openAuthModal())
+   onClick = () => navigate("/login")
   }
 
   // onClick={() => dispatch(openAuthModal())}
