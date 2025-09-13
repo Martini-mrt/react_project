@@ -8,12 +8,18 @@ import { BrowserRouter } from "react-router";
 import { store } from "./store/store.ts";
 import { Provider } from "react-redux";
 
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+
+
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <Provider store={store}>
       <BrowserRouter>
         <QueryClientProvider client={queryClient}>
           <App />
+          
+          <ReactQueryDevtools initialIsOpen={true} />
+
         </QueryClientProvider>
       </BrowserRouter>
     </Provider>

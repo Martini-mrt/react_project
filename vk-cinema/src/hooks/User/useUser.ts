@@ -19,7 +19,11 @@ export const useUserLogout = () => {
     mutationFn: logout,
     onSuccess: () => {
       console.log("logout")
-      queryClient.removeQueries({queryKey: ["auth", "me"]}); 
+      // 
+      // скидывем кеш - тем самым делаем ререндер по опдписке на это состояние
+      queryClient.setQueryData(["auth","me"], null);
+      // удаляем данные профиля пользователя
+      queryClient.removeQueries({queryKey: ["user", "profile"]}); 
     }
   });
 };
@@ -54,8 +58,14 @@ export const useUserLogin = () => {
     mutationKey: ["auth", "login"],
     mutationFn: ({ email, password }: { email: string; password: string }) => login(email, password),
     onSuccess: (data) => {
-      console.log(data)
-      queryClient.setQueryData(["auth","me"], data)
+      console.log(data, "данные с login")
+
+     
+     //  делаем инвалидацию ключей - перезапрашиваем данные
+      queryClient.invalidateQueries({
+        queryKey: ["auth","me"]
+      })
+      // queryClient.setQueryData(["auth","me"], data)
     }
   //    onError: (error) => {
   //   // An error happened!

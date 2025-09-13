@@ -8,22 +8,36 @@ import { RootState } from "../../store/store";
 import { closeAuthModal } from "../../store/sliceModal";
 
 const ModalContainer: React.FC<ModalContainerProps> = ({ children }) => {
-const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-    const isOpen = useSelector((state: RootState) => state.ui.isAuthModalOpen);
+  const isOpen = useSelector((state: RootState) => state.ui.isAuthModalOpen);
 
-    if (!isOpen) return null;
+  if (!isOpen) return null;
 
-  // cons isOpen = 
+  const closePopup = (event?: React.MouseEvent<HTMLDivElement>) => {
+
+    console.log(event)
+    // поставил !event - потому что кнопка закрыть передает undefined - в обработчике onClick (можно поменять значение)
+    if (!event || event.target === event.currentTarget) {
+      dispatch(closeAuthModal());
+    }
+
+    
+   
+  };
+
+  // cons isOpen =
   // сделать состояние
 
   //  <button onClick={() => dispatch(closeLoginModal())}>Close</button>
 
-  return <Portal className="overlay">
-
-    <ModalWindows onCloseModal={() => dispatch(closeAuthModal())}/>
-
-  </Portal>;
+  return (
+    <Portal className="overlay" onClickOverlay={closePopup}>
+      {/* сюда поставить контент - остановился здесь */}
+      <ModalWindows onCloseModal={() => closePopup()} />
+      {/* onCloseModal={closePopup} */}
+    </Portal>
+  );
 };
 
 export default ModalContainer;

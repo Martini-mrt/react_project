@@ -13,9 +13,11 @@ const Login: React.FC<LoginProps> = ({ children }) => {
 const navigate = useNavigate();
   //todo нужно узнать аторизован ли пользователь
 
-  const userProfile = useUserMe();
+  const userMe = useUserMe();
 
-  console.log(userProfile);
+  // console.log(userMe, "useUserMe");
+
+  // userMe.data === undefined? console.log("дата равна null") : console.log("дата есть")
 
 // меняем данные стейта
   const dispatch = useDispatch();
@@ -42,12 +44,20 @@ const navigate = useNavigate();
   //  console.log(className)
   // userProfile.isSuccess
   console.log("render")
-  if (userProfile.isSuccess) {
-    text = capitalize(userProfile.data.name) + "rrr";
+
+  if (userMe.data)  {
+
+    //!! запрос данных профиля после UserMe
+    text = capitalize(userMe.data.name);
+    // text = "поменял на свой";
     typeElement = "link";
   } else {
-  //  onClick = () => dispatch(openAuthModal())
-   onClick = () => navigate("/login")
+     // todo сделать смену селектора на появления модаьного окна login
+   onClick = () => dispatch(openAuthModal())
+
+
+   
+  //  onClick = () => navigate("/login")
   }
 
   // onClick={() => dispatch(openAuthModal())}

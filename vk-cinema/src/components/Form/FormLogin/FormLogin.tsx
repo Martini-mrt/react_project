@@ -42,12 +42,14 @@ const FormLogin: React.FC<FormLoginProps> = ({ onGoToReg }) => {
       <InputForm
         placeholder="Электронная почта"
         type="email"
+        value={"test@test.com"}
         {...register("email")}
         isError={errors?.email}
       />
       <InputForm
         placeholder="Пароль"
         type="password"
+        value={"d4Sv{3d23f"}
         {...register("password")}
         isError={errors?.password}
       />
