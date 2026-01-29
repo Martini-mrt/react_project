@@ -1,0 +1,15 @@
+// @import заменил на @use чтобы не было дубликатов подключения 
+// @use "normalize";
+@use "reset";
+
+// @use "mixins";
+@use "modernCssReset";
+@use "fonts";
+@use "variable";
+@use "general";
+@use "containers";
+
+// @use "_utilites";
+
+
+// ! птом удалить лишние файлы и ипорты

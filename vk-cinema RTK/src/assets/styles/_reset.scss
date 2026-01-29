@@ -1,0 +1,80 @@
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  /* минимальная ширина страницы */
+  min-width: 320px;
+  /* скидываем все внешние отступы */
+  margin: 0;
+  /* скидываем все внутренние отступы */
+  padding: 0;
+}
+
+button,
+input {
+  /* наследуем шрифт от родителя */
+  font: inherit;
+  color: var(--colorBlack);
+}
+
+input {
+  outline: none;
+  border: none;
+  border-radius: 0;
+}
+
+textarea {
+  border-radius: 0;
+}
+
+img {
+  /* Устанавливает максимальную ширину элемента */
+  max-width: 100%;
+  /*  устанавливает высоту исходя из содержимого элемента */
+  height: auto;
+  display: block;
+}
+
+a {
+  /* убераем подчеркивание с сылки */
+  text-decoration: none;
+  /* наследуем цвет от родителя */
+  color: inherit;
+  outline: none;
+}
+
+ul {
+  /* убераем маркеры элементам списка*/
+  list-style: none;
+  /* убираем все отступы элементам списка */
+  margin: 0px;
+  padding: 0px;
+}
+
+h1,
+h2,
+h3,
+p {
+  /* убираем все отступы заголовкам */
+  padding: 0;
+  margin: 0;
+}
+
+button {
+  display: inline-block;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  background-color: transparent;
+}
+
+

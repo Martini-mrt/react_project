@@ -1,0 +1,15 @@
+@use "../../assets/styles/mixins";
+
+.sociallist {
+  display: flex;
+  justify-content: end;
+  gap: 24px;
+  // padding: 40px 0;
+  width: 100%;
+  
+  @include mixins.mobile {
+    justify-content: start;
+    padding-top: 12px;
+  }
+
+}

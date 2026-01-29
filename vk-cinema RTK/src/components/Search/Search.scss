@@ -1,0 +1,47 @@
+@use "../../assets/styles/mixins";
+
+.search {
+  display: flex;
+  align-items: center;
+  gap:12px;
+  padding: 9px 16px;
+  width: 100%;
+  max-width: 655px;
+  border-radius: 8px;
+  background-color: var(--bgInterface);
+
+  &__svg {
+    opacity: 0.5;
+  }
+
+  &__input {
+    width: 100%;
+    background-color: transparent;
+    font-size: 18px;
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+  }
+
+
+  // этот класс сделан чтоб скрывать элемент по медиа запросу на мобиле
+  &--hide {
+    // display: flex;
+
+    @include mixins.mobile {
+      display: none;
+    }
+  }
+
+  // &--hide {
+  //   display: none;
+  //   // align-items: center;
+
+  //   @include mixins.mobile {
+  //     display: flex;
+  //   }
+  // }
+
+
+}

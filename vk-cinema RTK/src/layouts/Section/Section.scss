@@ -1,0 +1,17 @@
+.section {
+  // styles
+   padding: clamp(16px, 2vw, 64px) 0 clamp(32px, 5vw, 120px) 0;
+  // padding-bottom: clamp(32px, 5vw, 120px);
+
+  &__heading {
+    margin-bottom: clamp(40px, 5vw, 64px);
+    font-size: clamp(24px, 3.7vw, 40px);
+    color: var(--ColorWhite);
+    font-weight: 700;
+  }
+
+  &__footer {
+    height: 100px;
+    background-color: aqua;
+  }
+}

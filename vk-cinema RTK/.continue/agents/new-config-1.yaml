@@ -1,0 +1,16 @@
+name: Local Config
+version: 1.0.0
+schema: v1
+
+models:
+- name: Gemini 2.0 Flash
+  provider: google
+  model: gemini-2.0-flash-exp
+  apiKey: AIzaSyBxjAp-wlg_BimMM0ZSV0OiviKD1Z-ryo8
+- name: Gemini 1.5 Pro
+  provider: google
+  model: gemini-1.5-pro
+  apiKey: AIzaSyBxjAp-wlg_BimMM0ZSV0OiviKD1Z-ryo8
+
+mcpServers:
+- uses: anthropic/memory-mcp

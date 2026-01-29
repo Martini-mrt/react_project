@@ -1,0 +1,40 @@
+.btnround {
+  display: grid;
+  place-items: center;
+  border-radius: 24px;
+  background-color: var(--ColorWhite);
+  // background-color: rgb(113, 223, 113);
+
+      transition: background-color 0.1s ease-in;
+
+  &:hover {
+    background-color: var(--hoverColorMenu);
+  }
+
+  &:focus {
+    background-color: var(--hoverColorMenu);
+}
+
+  &__svg {
+    width: 20px;
+    height: 20px;
+  }
+
+
+&.btnround--s {
+ width: 40px;
+ height: 40px;
+}
+
+&.btnround--m {
+ width: 48px;
+ height: 48px;
+}
+
+&.btnround--l {
+ width: 80px;
+ height: 80px;
+ border-radius: 40px;
+}
+
+}

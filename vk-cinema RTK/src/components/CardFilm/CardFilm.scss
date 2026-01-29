@@ -1,0 +1,144 @@
+@use "../../assets/styles/mixins";
+
+.card-film {
+  position: relative;
+  display: block;
+  max-width: 335px;
+  // width: 100%;
+  height: 100%;
+
+  min-width: 176px;
+  // max-width: 670px;
+  border-radius: 24px;
+
+  // overflow: hidden;
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  // border-radius: 16px;
+
+  box-shadow: 0 0 80px 0 rgba(255, 255, 255, 0.33);
+  background: #3c3c3c;
+
+  transition:
+    border 0.1s ease-in,
+    box-shadow 0.1s ease-in;
+
+  &:hover {
+    border: 1px solid var(--ColorWhite);
+    box-shadow: 0 0 80px 0 rgba(255, 255, 255, 0.572);
+  }
+
+  @include mixins.tablet {
+    border-radius: 33px;
+  }
+
+  &__inner {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 24px;
+  }
+
+  &__slug-heading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    width: 80%;
+    transform: translate(-50%, -50%);
+    background-color: #45526ebf;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    // border-radius: 16px;
+    // border-radius: 24px;
+
+    @include mixins.tablet {
+      border-radius: 33px;
+    }
+  }
+
+  // TODO сделать компонент BTN
+  &__btn-close {
+    position: absolute;
+    left: 90%;
+    top: -5%;
+    z-index: 5;
+    display: none;
+    place-items: center;
+    width: 17%;
+    height: 11%;
+    border-radius: 30px;
+    background-color: var(--ColorWhite);
+
+    opacity: 0;
+    transition:
+      opacity 0.3s ease-in-out,
+      background-color 0.1s ease-in;
+
+
+      // !! сделать анимацию ховер появления кнопик закрыть
+        //  Анимация
+  //   opacity: 0.4;
+  //   transform: translateY(20px);
+  //   animation: fadeInUp 1s forwards;
+  //   animation-delay: 0.7s;
+
+
+
+  //    @keyframes fadeInUp {
+  //   to {
+  //     opacity: 1;
+  //     // transform: translateY(0);
+  //   }
+  // }
+
+    &:hover {
+     
+      background-color: var(--hoverColorMenu);
+    }
+
+    &:focus {
+      background-color: var(--hoverColorMenu);
+    }
+  }
+
+  &:hover &__btn-close {
+     display: grid;
+    opacity: 1;
+  }
+
+  &:focus-within &__btn-close {
+    opacity: 1;
+  }
+
+  //
+
+  &:focus-visible {
+    background: #f7e6e6;
+  }
+
+  &::before {
+    position: absolute;
+    left: -4%;
+    top: -4%;
+    z-index: 5;
+    display: none;
+    place-items: center;
+    content: attr(data-label);
+    width: 24%;
+    height: 14%;
+    color: var(--cardLabel);
+    font-size: 24px;
+    font-weight: 700;
+    border-radius: 50px;
+    background-color: var(--ColorWhite);
+  }
+
+  &--show-top::before {
+    display: grid;
+  }
+}

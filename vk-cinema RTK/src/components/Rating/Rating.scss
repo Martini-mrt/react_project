@@ -1,0 +1,46 @@
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 12px;
+  max-width: 70px;
+  // max-width: 80px;
+  border-radius: 16px;
+
+&.red {
+  background-color: #c82020;
+}
+
+&.grey {
+  background-color: #777;
+}
+
+&.green {
+  background-color: #308e21;
+}
+
+&.gold {
+  background-color: #a59400;
+}
+
+
+
+  &__svg {
+  width: 16px;
+  height: 16px;
+  }
+
+ &__value {
+  font-size: 18px;
+  font-weight: 700;
+ }
+
+
+
+  &--small {
+    width: 10px;
+    height: 10px;
+  }
+
+
+}

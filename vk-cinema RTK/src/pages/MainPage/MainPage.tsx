@@ -1,0 +1,78 @@
+
+import "./MainPage.scss";
+
+import HeroFilm from "../../components/HeroFilm";
+import Section from "../../layouts/Section";
+import ListCard from "../../components/ListCard";
+
+import { useRandomMovie, useTopTenMovies } from "../../hooks/Movie/useMovie";
+
+import { useNavigate } from "react-router";
+import { useAddToFavorites } from "../../hooks/favorites/useFavorites";
+// import { addToFavorites } from "../../api/favorites/favorites";
+import {  useUserLogin, useUserRegistrations } from "../../hooks/User/useUser";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
+import { useGetRandomMovieQuery } from "../../features/movie/api/movie.api";
+
+// ! меню хедера не соответвует макету
+
+
+
+const MainPage: React.FC<MainPageProps> = ({onFav}) => {
+  // const { id } = useParams();
+  const navigate = useNavigate();
+
+  // console.log("render");
+
+  // const { data: movieRandom, refetch } = useRandomMovie();
+
+  const {data: movieRandom, refetch} =  useGetRandomMovieQuery();
+  const {data: topListCard} = useTopTenMovies();
+
+
+//   console.log("Data:", data);
+// console.log("Loading:", isLoading);
+// console.log("Error:", error);
+
+  //  const { data: listCard } = useTopTenMovies();
+
+   
+   
+// const { mutate: registr } = useUserRegistrations();
+  //  console.log(error)
+
+
+
+  // получаем данные state
+// const modal = useSelector((state: RootState) => state.modalAuth)
+
+
+
+// console.log(modal)
+
+ const { mutate } = useUserLogin();
+
+  return (
+    <>
+     
+      <HeroFilm
+        movieData={movieRandom}
+        handleRefetch={refetch}
+        handleLike={() => console.log("sssss")}
+        handleAboutFilm={() => navigate(`/movie/${movieRandom?.id}`)}
+        // handleTriller={() => console.log("TRILLER")}
+        handleTriller={() => mutate({ email: "mrt10", password: "1"})}
+        // handleTriller={() => registr({ email: "mrt10", password: "1", name: "MRT", surname: "MORGUNOV"})}
+      />
+
+
+      <Section heading="Топ 10 фильмов" childrenInContainer={false}>
+        <ListCard mode="top" listCard={topListCard} />
+      </Section>
+      
+    </>
+  );
+};
+
+export default MainPage;
