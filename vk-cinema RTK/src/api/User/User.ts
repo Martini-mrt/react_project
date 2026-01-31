@@ -1,7 +1,7 @@
 import { safeApiCall } from "../../utils/safeApiCall";
 import { apiClient } from "../axios";
 import { ErrorSchema } from "../Schema/ErrorSchem";
-import { SuccessLoginUserSchema, SuccessProfileUserSchema, SuccessRegistrationsUserSchema } from "../Schema/UserSchem";
+import { SuccessLoginUserSchema, SuccessProfileUserSchema, SuccessRegistrationsUserSchema } from "../../features/user/schema/UserSchem";
 
 
 

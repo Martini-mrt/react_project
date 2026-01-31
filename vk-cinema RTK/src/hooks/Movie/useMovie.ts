@@ -8,7 +8,7 @@ import {
   IGetMoviesByFilter,
 } from "../../api/movie/movies";
 // import { wrapQueryFn } from "../../utils/wrapQueryFn";
-import { TMovie } from "../../api/Schema/MoviesSchem";
+import { TMovie } from "../../features/movie/schema/MoviesSchem";
 
 
 export const useMoviesByFilter = ({

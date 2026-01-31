@@ -8,7 +8,7 @@ import { BrowserRouter } from "react-router";
 import { store } from "./app/store.ts";
 import { Provider } from "react-redux";
 
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+// import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
 
 createRoot(document.getElementById("root")!).render(

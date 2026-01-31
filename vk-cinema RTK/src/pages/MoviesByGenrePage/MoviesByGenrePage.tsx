@@ -7,7 +7,7 @@ import { useParams } from "react-router";
 import { useMoviesByFilter } from "../../hooks/Movie/useMovie";
 import { translateGenres } from "../../utils/translateGenres";
 import { capitalize } from "../../utils/capitalize";
-import { TMovie } from "../../api/Schema/MoviesSchem";
+import { TMovie } from "../../features/movie/schema/MoviesSchem";
 import { useGetMoviesByFilterQuery } from "../../features/movie/api/movie.api";
 
 
@@ -29,7 +29,7 @@ const MoviesByGenrePage: React.FC<MoviesByGenrePageProps> = () => {
   const {data, isSuccess, isLoading} = useGetMoviesByFilterQuery({
     genre,
     page,
-    limit: 10,
+    limit: 15,
   });
 
 

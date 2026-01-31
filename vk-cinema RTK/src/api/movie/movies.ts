@@ -6,7 +6,7 @@ import {
   MovieSchema,
   MoviesGenresSchema,
   MoviesSchemaList
-} from "../Schema/MoviesSchem";
+} from "../../features/movie/schema/MoviesSchem";
 import { safeApiCall } from "../../utils/safeApiCall";
 import { apiClient } from "../axios";
 import { ErrorSchema } from "../Schema/ErrorSchem";

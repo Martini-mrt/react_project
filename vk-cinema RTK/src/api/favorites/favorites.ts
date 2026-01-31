@@ -1,8 +1,8 @@
 import { safeApiCall } from "../../utils/safeApiCall";
 import { apiClient } from "../axios";
 import { ErrorSchema } from "../Schema/ErrorSchem";
-import { MoviesSchemaList } from "../Schema/MoviesSchem";
-import { SuccessLoginUserSchema } from "../Schema/UserSchem";
+import { MoviesSchemaList } from "../../features/movie/schema/MoviesSchem";
+import { SuccessLoginUserSchema } from "../../features/user/schema/UserSchem";
 
 export const getFavorites = async () => {
   return safeApiCall(

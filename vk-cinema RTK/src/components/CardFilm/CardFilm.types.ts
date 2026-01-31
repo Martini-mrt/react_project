@@ -1,6 +1,6 @@
 // import { ReactNode } from 'react';
 
-import { TMovie } from "../../api/Schema/MoviesSchem";
+import { TMovie } from "../../features/movie/schema/MoviesSchem";
 
 export interface CardFilmProps {
   // children?: ReactNode;

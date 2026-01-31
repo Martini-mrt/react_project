@@ -4,7 +4,8 @@ const API_URL = "/api";
 
 export const api = createApi({
   reducerPath: "api",
-  //   tagTypes: [],
+  // тег для инвалидации
+  tagTypes: ['auth/login','Favorites'],
   baseQuery: fetchBaseQuery({
     baseUrl: API_URL,
   }),

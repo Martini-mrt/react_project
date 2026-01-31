@@ -1,9 +1,14 @@
+/**
+ * Запрос информации о фильмах
+ */
+
+
 import {
   MovieSchema,
   MoviesSchemaList,
   MoviesGenresSchema,
   TMovie,
-} from "../../../api/Schema/MoviesSchem";
+} from "../schema/MoviesSchem";
 import { api } from "../../../app/rootApi";
 
 export interface IGetMoviesByFilter {
