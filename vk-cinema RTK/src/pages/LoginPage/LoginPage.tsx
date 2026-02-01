@@ -7,9 +7,14 @@ import FormLogin from "../../components/Form/FormLogin";
 import FormRegistration from "../../components/Form/FormRegistration";
 import SuccessWindowsContent from "../../components/SuccessWindowsContent";
 import Portal from "../../components/Portal";
+import { useNavigate } from "react-router";
 
 const LoginPage: React.FC<LoginPageProps> = ({ children }) => {
   const [step, setStep] = useState<"login" | "register" | "success">("login");
+  
+const navigate = useNavigate();
+// Функция для закрытия
+  const handleClose = () => navigate("/");
 
   const renderContent = () => {
     switch (step) {
@@ -42,12 +47,17 @@ const LoginPage: React.FC<LoginPageProps> = ({ children }) => {
   const heading = headingMap[step];
 
   return (
-    <Portal className="portal-overlay">
+    <Portal className="portal-overlay" onClickOverlay={handleClose}>
       {/* <Overlay> */}
-        <ModalWindows heading={heading}>{renderContent()}</ModalWindows>
+        <ModalWindows 
+        heading={heading} 
+        onCloseModal={handleClose}>
+          {renderContent()}
+          </ModalWindows>
       {/* </Overlay> */}
     </Portal>
   );
 };
 
 export default LoginPage;
+

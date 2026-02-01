@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 // Импортируем именно основной api
 import { api } from "./rootApi";
+import { rtkQueryErrorLogger } from "./middleware/errorMiddleware";
 
 export const store = configureStore({
   reducer: {
@@ -11,7 +12,10 @@ export const store = configureStore({
 
   // Добавление мидлвара обязательно для работы кэширования и инвалидации
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(api.middleware),
+    getDefaultMiddleware()
+  .concat(api.middleware)
+  // Добавляем  ловушку ошибок,
+  .concat(rtkQueryErrorLogger), 
 });
 
 // export type RootState = ReturnType<typeof store.getState>;

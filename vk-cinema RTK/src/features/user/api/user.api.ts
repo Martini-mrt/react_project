@@ -8,6 +8,7 @@ import { api } from "../../../app/rootApi";
 import {
   SuccessLoginUserSchema,
   SuccessProfileUserSchema,
+  SuccessRegistrationsUserSchema,
   TSuccessUserAuthSchema,
 } from "../schema/UserSchem";
 
@@ -21,7 +22,7 @@ export const userApi = api.injectEndpoints({
       }),
       transformResponse: (response: unknown): TSuccessUserAuthSchema => {
         const result = SuccessLoginUserSchema.safeParse(response);
-
+          console.log(result)
         if (!result.success) {
           //делать функцию ответа
           throw new Error("Server data corrupted");
@@ -51,8 +52,7 @@ export const userApi = api.injectEndpoints({
         body: {email, password, name, surname},
       }),
       transformResponse: (response: unknown): TSuccessUserAuthSchema => {
-        const result = SuccessLoginUserSchema.safeParse(response);
-
+        const result = SuccessRegistrationsUserSchema.safeParse(response);
         if (!result.success) {
           //делать функцию ответа
           throw new Error("Server data corrupted");
@@ -91,3 +91,7 @@ export const {
   useCreateUserMutation,
   useGetUserProfileQuery,
 } = userApi;
+
+
+
+

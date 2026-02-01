@@ -4,6 +4,7 @@ import { BtnProps } from "./Btn.types";
 import IconSVG from "../IconSVG";
 
 // TODO потом улучьшить компонент
+// TODO добавить disabled
 
 const Btn: React.FC<BtnProps> = ({ text, styleBtn, like, className = "", onClick , isLoading, ...props}) => {
   switch (styleBtn) {

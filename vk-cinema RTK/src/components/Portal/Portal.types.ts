@@ -5,5 +5,7 @@ export interface PortalProps {
   container?: HTMLElement;
   className?: string;
   id?: string;
-  onClickOverlay?: (event: React.MouseEvent<HTMLDivElement>) => void;
+  // onClickOverlay?: (event: React.MouseEvent<HTMLDivElement>) => void;
+    onClickOverlay?: () => void;
+
 }

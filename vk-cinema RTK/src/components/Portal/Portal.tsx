@@ -22,18 +22,46 @@ const Portal: React.FC<PortalProps> = ({
 
   useEffect(() => {
     const el = elRef.current!;
+    if (!el) return;
+
+    // Обработчик клика по фону
+    const handleTargetClick = (e: MouseEvent) => {
+      // Проверка: клик был именно по оверлею (el), а не по его детям (форме)
+      if (e.target === el && onClickOverlay) {
+        onClickOverlay();
+      }
+    };
+
+    // Обработчик клавиши Escape
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && onClickOverlay) {
+        onClickOverlay();
+      }
+    };
+
     //  подписываемся на клик по overlay
-    if (onClickOverlay) el.addEventListener("click", onClickOverlay);
+    if (onClickOverlay) {
+      el.addEventListener("click", handleTargetClick);
+      // Слушаем на уровне окна
+      window.addEventListener("keydown", handleKeyDown); 
+    }
 
     // добавляем в контейнер
     container.appendChild(el);
 
     return () => {
-      if (onClickOverlay) el.removeEventListener("click", onClickOverlay);
+      if (onClickOverlay){
+        el.removeEventListener("click", handleTargetClick);
+        window.removeEventListener("keydown", handleKeyDown);
+      } 
       // удаляем при размонтировании
-      container.removeChild(el);
+      if (container.contains(el)) {
+        container.removeChild(el);
+      }
+      
+      // container.removeChild(el);
     };
-  }, [container]);
+  }, [container, onClickOverlay]);
 
   return elRef.current ? createPortal(children, elRef.current) : null;
 };

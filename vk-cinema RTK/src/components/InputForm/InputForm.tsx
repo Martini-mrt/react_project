@@ -5,33 +5,22 @@ import IconSVG from "../IconSVG";
 
 
 
-
-// const InputForm  = React.ForwardedRef<HTMLInputElement,InputFormProps>(props, ref) => {
-
-//   return (
-//     // inputform--error
-//     <div className="input-form">
-//       <IconSVG className="input-form__svg" icon={type !== "text" ? type : "login"  } />
-//       <input ref={ref} className="input-form__input" type={type} placeholder={placeholder}/>
-//     </div>
-//   );
-// };
-
-// export default InputForm;
-
-
-
-
-
 const InputForm = React.forwardRef<HTMLInputElement, InputFormProps>(
   ({ icon, isError,type="text", placeholder, ...rest }, ref) => {
+
+    // Определяем иконку: если передана явно — берем её, 
+    // если нет — смотрим на тип инпута, иначе дефолт "login"
+    const currentIcon = icon || (type !== "text" ? type : "login");
+
     return (
       // <div className={"input-form inputform--error"}>
         <div className={`input-form ${isError && "input-form--error"}`}>
+         { currentIcon && (
         <IconSVG
           className="input-form__svg"
-          icon={type !== "text" ? type : icon || "login"}
+          icon={currentIcon}
         />
+        )}
         <input
           ref={ref}
           className="input-form__input"
