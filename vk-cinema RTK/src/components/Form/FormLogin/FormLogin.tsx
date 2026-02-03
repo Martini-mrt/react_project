@@ -18,10 +18,14 @@ import { Navigate, useNavigate } from "react-router";
 
 const FormLogin: React.FC<FormLoginProps> = ({ onGoToReg }) => {
   // const { mutate, error } = useUserLogin();
-const navigate = useNavigate();
+  const navigate = useNavigate();
   const [login, { error: serverError, isLoading }] = useLoginMutation();
 
-  const { register, handleSubmit, formState: {errors} } = useForm<TFormLoginSchema>({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<TFormLoginSchema>({
     resolver: zodResolver(FormLoginSchema),
   });
 
@@ -35,7 +39,10 @@ const navigate = useNavigate();
       await login(data).unwrap();
       // Тут navigate...
       // console.log("Успешный вход!");
-      navigate('/');
+      // navigate("/profile");
+
+      // replace: true удаляет /login из стека истории, чтоб мы не могли попасть в login при перходе обратно
+      navigate("/profile", { replace: true });
     } catch {
       // Ошибку не пробрасываем, она уже в serverError
     }
@@ -61,7 +68,12 @@ const navigate = useNavigate();
       />
 
       <div className="form__wrap-btn">
-        <Btn styleBtn="primary" text="Войти" type="submit" disabled={isLoading}/>
+        <Btn
+          styleBtn="primary"
+          text="Войти"
+          type="submit"
+          disabled={isLoading}
+        />
         <Btn
           styleBtn="onlyText"
           text="Регистрация"

@@ -40,9 +40,7 @@ const MenuList: React.FC<MenuListProps> = () => {
 
         <li className={"menulist__item"}>
           {/* тут нужно сделать оберку логин */}
-          <Login>
-             <MenuElement typeElement="btn"  text="Войти" icon="login"/>
-          </Login>
+          <Login />
 
           
         </li>

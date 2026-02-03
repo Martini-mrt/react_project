@@ -1,6 +1,6 @@
 // import MainPage from "./pages/MainPage";
 
-import { Route, Routes } from "react-router";
+import { Route, Routes, useLocation } from "react-router";
 import Footer from "./components/Footer";
 import HeaderLayout from "./layouts/HeaderLayout";
 import SocialList from "./layouts/SocialList";
@@ -17,75 +17,71 @@ import { RootState } from "./store/store";
 import { useUserProfile } from "./hooks/User/useUser";
 import ModalWindows from "./components/ModalWindows";
 import ModalContainer from "./components/ModalContainer";
-
+import ProtectedRoute from "./features/user/components/ProtectedRoute";
 
 // link
 // <link to={'/link'}>name</link>
-
-
 
 // Hook
 // const navigate =useNavigate()
 // как работать с хуком
 // navigate("/link")
 
-
-
 // ! остановился что нужно сделать:
-//  модалку со стейт менеджером - 
+//  модалку со стейт менеджером -
 // модалку помещать в портал а компнент подроутерами
 
 //  поменстить хук fetch me - и дедлать логику в отображения
 // поместть хук fetch me в favorites - и сравнивать там массив с id
 // протектед роут - там тоже сверяемся с хуком
 
-
-
 function App() {
-// const [isLoginOpen, setLoginOpen] = useState(false);
+  const location = useLocation();
 
-
-// const { data  } = useUserProfile();
-  
-// console.log("app =>",data)
+  // Достаем фоновую локацию из стейта.
+  // Мы ее передадим позже при клике на кнопку "Войти".
+  const background = location.state?.background;
 
   return (
-  
-<>
+    <>
+      {/* СЛОЙ 1: ОСНОВНОЙ КОНТЕНТ (то, что под модалкой) */}
+      {/* Если background есть, Routes будет "думать", что мы всё еще на старой странице */}
 
+      <Routes location={background || location}>
+        <Route element={<AppLayout />}>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/genre" element={<GenrePage />} />
+          <Route path="/genre/:genre" element={<MoviesByGenrePage />} />
+          <Route path="/movie/:id" element={<MoviePage />} />
 
-    <Routes>
-      <Route element={<AppLayout />} > 
+          {/* создать прослойку элемент проверяюший авторизацию */}
+          {/* Страница профиля (потом обернуть в ProtectedRoute)!!!! */}
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoute>
+                <ProfilePage />
+              </ProtectedRoute>
+            }
+          />
 
-      <Route path="/" element={<MainPage />} />
-      <Route path="/genre" element={<GenrePage />} />
-      <Route path="/genre/:genre" element={<MoviesByGenrePage />} />
-      <Route path="/movie/:id" element={<MoviePage />} />
+          {/* Путь для логина "на весь экран" (если зашли по прямой ссылке) */}
+          <Route path="/login" element={<LoginPage />} />
 
-{/* создать прослойку элемент проверяюший авторизацию */}
-      <Route path="/profile" element={<ProfilePage />} />
-      <Route path="/login" element={<LoginPage />} />
-      
-      <Route path="*" element={<MainPage />} />
+          <Route path="*" element={<MainPage />} />
+        </Route>
+      </Routes>
 
-      </Route> 
-    </Routes>
-
-
-   {/* <ModalContainer /> */}
-
-{/* {isLoginOpen &&  <LoginPage /> } */}
-
-
-
-    
-
-  
-
-  
-</>
-
-);
+      {/* СЛОЙ 2: МОДАЛЬНЫЙ (ПОВЕРХ) */}
+      {/* Этот блок рендерится ТОЛЬКО если мы открыли модалку кликом */}
+      {background && (
+        <Routes>
+          <Route path="/login" element={<LoginPage />} />
+          {/* Сюда же можно добавить /register, если нужно */}
+        </Routes>
+      )}
+    </>
+  );
 }
 
 export default App;

@@ -8,6 +8,8 @@ export const api = createApi({
   tagTypes: ['auth/login','Favorites'],
   baseQuery: fetchBaseQuery({
     baseUrl: API_URL,
+    // ЭТО ПОЛЕ ОБЯЗАТЕЛЬНО ДЛЯ КУК
+    credentials: 'include',
   }),
 
 //   endpoints мы будем инжектировать

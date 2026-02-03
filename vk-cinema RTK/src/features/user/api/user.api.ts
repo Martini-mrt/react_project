@@ -33,8 +33,26 @@ export const userApi = api.injectEndpoints({
       invalidatesTags: ["auth/login"],
     }),
 
-    logout: builder.query<TSuccessUserAuthSchema, void>({
-      query: () => `/auth/logout`,
+    logout: builder.mutation<TSuccessUserAuthSchema, void>({
+      query: () => ({
+        url: `/auth/logout`,
+        method: 'GET', 
+      }),
+      invalidatesTags: ["auth/login"],
+
+    //   при logout очищаем кеш - если есть данные в LocalStorage удаляем (в моем случае только кешь)
+      async onQueryStarted(_, { dispatch, queryFulfilled }) {
+        try {
+          await queryFulfilled;
+          // Полностью очищаем кэш API (полезно, чтобы затереть историю поисков и т.д.)
+          dispatch(userApi.util.resetApiState());
+          // Если есть токен в localStorage — удаляем
+        //   localStorage.removeItem('token'); 
+        } catch (e) {
+          console.error("Ошибка при выходе:", e);
+        }
+      },
+      
       transformResponse: (response: unknown): TSuccessUserAuthSchema => {
         const result = SuccessLoginUserSchema.safeParse(response);
         if (!result.success) {
@@ -67,8 +85,12 @@ export const userApi = api.injectEndpoints({
 
    getUserProfile: builder.query<TSuccessUserAuthSchema, void>({
       query: () => `/profile`,
+      providesTags: ['auth/login'], // Этот запрос "слушает" тег User
       transformResponse: (response: unknown): TSuccessUserAuthSchema => {
         const result = SuccessProfileUserSchema.safeParse(response);
+
+        console.log(result)
+
         if (!result.success) {
           console.error("Ошибка валидации данных сервера:", result.error);
           throw new Error("Server data corrupted");
@@ -87,7 +109,7 @@ export const userApi = api.injectEndpoints({
 
 export const {
   useLoginMutation,
-  useLogoutQuery,
+  useLogoutMutation,
   useCreateUserMutation,
   useGetUserProfileQuery,
 } = userApi;

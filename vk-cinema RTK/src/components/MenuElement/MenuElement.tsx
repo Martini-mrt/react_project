@@ -21,7 +21,7 @@ const MenuElement: React.FC<MenuElementProps> = ({
         <>
           <button className="menuelement menuelement--desktop" {...props}>{text}</button>
           {!hideToMobile && (
-            <button
+            <button {...props}
               className="menuelement menuelement--mobile"
               aria-label={text}
             >

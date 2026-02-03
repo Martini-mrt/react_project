@@ -18,6 +18,7 @@ import {
   useGetFavorites,
 } from "../../hooks/favorites/useFavorites";
 import { useNavigate } from "react-router";
+import { useGetUserProfileQuery, useLogoutMutation} from "../../features/user/api/user.api";
 // import { capitalize } from "../../utils/capitalize";
 
 // TODO сделать модель фаворите
@@ -39,8 +40,14 @@ const Account: React.FC<ProfileProps> = () => {
 
   const navigate = useNavigate();
 
-  const { data: profileData } = useUserProfile();
-  const { mutate: logout } = useUserLogout();
+  const { data: profileData } = useGetUserProfileQuery();
+  // const { data: profileData } = useUserProfile();
+
+
+  // const { mutate: logout } = useUserLogout();
+  
+  const [ logout ] = useLogoutMutation();
+
 
   //  const{listFavorites: { data: favorites }, deleteByIdFavorites } = useFavorites();
   const { data: favorites } = useGetFavorites();
@@ -51,6 +58,7 @@ const Account: React.FC<ProfileProps> = () => {
 
   // console.log(favorites)
 
+  // ! переделать типы в валидации
   const name = profileData?.name || [""];
   const surname = profileData?.surname || [""];
 
@@ -60,6 +68,7 @@ const Account: React.FC<ProfileProps> = () => {
 
   const handleLogout = () => {
     logout();
+    // если сервер не вернул ошибку то переходим по ссылке
     navigate("/");
   };
 

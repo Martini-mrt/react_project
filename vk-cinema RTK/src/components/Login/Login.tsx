@@ -1,80 +1,65 @@
 import React from "react";
 import "./Login.scss";
 import { LoginProps } from "./Login.types";
-import { useUserMe } from "../../hooks/User/useUser";
 import { capitalize } from "../../utils/capitalize";
-// import { useDispatch } from "react-redux";
-// import { openAuthModal } from "../../store/sliceModal";
-import { useNavigate } from "react-router";
-
-const Login: React.FC<LoginProps> = ({ children }) => {
-  // блок входа потм убрать
-  //  const mutate = useUserLogin();
-const navigate = useNavigate();
-  //todo нужно узнать аторизован ли пользователь
-
-  const { data: user } = useUserMe();
-
-  // console.log(userMe, "useUserMe");
-
-  // user === undefined? console.log("дата равна null") : console.log("дата есть")
-
-// меняем данные стейта
-  // const dispatch = useDispatch();
+import MenuElement from "../MenuElement";
+import { useLocation, useNavigate } from "react-router";
+import { useGetUserProfileQuery, useLoginMutation } from "../../features/user/api/user.api";
 
 
-  // const testDispatch = () => {
-  //   //  console.log("sdssdsds")
-     
 
-  //   //  const clatch: modalAuthState = true;
+const Login: React.FC<LoginProps> = () => {
+  
 
-  //   //  dispatch(modalAuthActions.setModalAuth({showModal: true}))
-  // }
+ const navigate = useNavigate();
+  const location = useLocation();
+  
+//  const [login, { error: serverError}] = useLoginMutation();
 
-  //  const { data  } = useUserProfile();
+//  console.log(login, serverError, "my data")
 
-  let text = "Войти";
-  let typeElement = "btn";
-  let onClick = ()=>{};
+  // RTK Query: берем данные из кэша/сервера
+  const { data: user, isLoading, isError } = useGetUserProfileQuery();
 
+  if (isLoading) return <div className="skeleton" style={{ width: 80, height: 40 }} />;
 
-  const to = "/profile";
+  // Если юзер авторизован (есть данные и нет ошибки)
+  if (user && !isError) {
+    
+    console.log("ок. атвторизован")
+    return (
+      <MenuElement 
+      to={"/profile"} 
+      typeElement="link" 
+      text={capitalize(user?.name) }
+      icon="login"/>
+      
 
-  //  console.log(className)
-  // userProfile.isSuccess
-  console.log("render")
-
-  if (user)  {
-
-    //!! запрос данных профиля после UserMe
-    text = capitalize(user.name);
-    // text = "поменял на свой";
-    typeElement = "link";
-  } else {
-     // todo сделать смену селектора на появления модаьного окна login
-  //  onClick = () => dispatch(openAuthModal())
-
-
-   
-  //  onClick = () => navigate("/login")
+    );
   }
 
-  // onClick={() => dispatch(openAuthModal())}
+      console.log("я не атвторизован", user, isError)
 
-  // const extraProps = {
+  // Если не авторизован
+  return (
+    
+    <MenuElement 
+      to={"/profile"} 
+      typeElement="btn" 
+      icon="login"
+      text={"Войти"}
+      onClick={() => navigate("/login", { state: { background: location } })} 
+      />
+  );
+ 
 
-  // }
 
-  // const text = "sdsddsd"
+  
+ 
 
-  return React.cloneElement(children, {
-    // text: userProfile.isSuccess? "есть авторизация" : "Войти",
-    text,
-    typeElement,
-    to,
-    onClick,
-  });
+ 
+
+ 
 };
 
 export default Login;
