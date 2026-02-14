@@ -18,7 +18,11 @@ import {
   useGetFavorites,
 } from "../../hooks/favorites/useFavorites";
 import { useNavigate } from "react-router";
-import { useGetUserProfileQuery, useLogoutMutation} from "../../features/user/api/user.api";
+import {
+  useGetUserProfileQuery,
+  useLogoutMutation,
+} from "../../features/user/api/user.api";
+import { useDeleteFavoritesMutation, useGetFavoritesQuery } from "../../features/favorites/api/favorites.api";
 // import { capitalize } from "../../utils/capitalize";
 
 // TODO сделать модель фаворите
@@ -43,15 +47,18 @@ const Account: React.FC<ProfileProps> = () => {
   const { data: profileData } = useGetUserProfileQuery();
   // const { data: profileData } = useUserProfile();
 
-
   // const { mutate: logout } = useUserLogout();
-  
-  const [ logout ] = useLogoutMutation();
 
+  const [logout] = useLogoutMutation();
 
   //  const{listFavorites: { data: favorites }, deleteByIdFavorites } = useFavorites();
-  const { data: favorites } = useGetFavorites();
-  const { mutate: delFavorite } = useDeleteFavorites();
+  // const { data: favorites } = useGetFavorites();
+
+ const { data: favorites } = useGetFavoritesQuery();
+
+const [deleteFavorite] = useDeleteFavoritesMutation();
+
+  // const { mutate: delFavorite } = useDeleteFavorites();
 
   //  console.log( mutate("98"))
   //
@@ -66,10 +73,15 @@ const Account: React.FC<ProfileProps> = () => {
 
   const initials = name[0].toUpperCase() + surname[0].toUpperCase();
 
-  const handleLogout = () => {
-    logout();
-    // если сервер не вернул ошибку то переходим по ссылке
-    navigate("/");
+  const handleLogout = async () => {
+    // logout();
+    try {
+      await logout().unwrap();
+      // если сервер не вернул ошибку то переходим по ссылке
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -88,7 +100,7 @@ const Account: React.FC<ProfileProps> = () => {
             <ListCard
               mode="btnClose"
               listCard={favorites}
-              onClose={delFavorite}
+              onClose={deleteFavorite}
             />
           )}
         </Tab>
@@ -123,3 +135,8 @@ const Account: React.FC<ProfileProps> = () => {
 };
 
 export default Account;
+
+//  useGetFavoritesQuery,
+//     useAddToFavoritesMutation,
+//     useDeleteFavoritesMutation,
+//     useToggleFavoriteMutation,

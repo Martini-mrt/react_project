@@ -8,18 +8,19 @@ import ListCard from "../../components/ListCard";
 import { useRandomMovie, useTopTenMovies } from "../../hooks/Movie/useMovie";
 
 import { useNavigate } from "react-router";
-import { useAddToFavorites } from "../../hooks/favorites/useFavorites";
+// import { useAddToFavorites } from "../../hooks/favorites/useFavorites";
 // import { addToFavorites } from "../../api/favorites/favorites";
-import {  useUserLogin, useUserRegistrations } from "../../hooks/User/useUser";
-import { useSelector } from "react-redux";
-import { RootState } from "../../store/store";
-import { useGetRandomMovieQuery } from "../../features/movie/api/movie.api";
+// import {  useUserLogin, useUserRegistrations } from "../../hooks/User/useUser";
+// import { useSelector } from "react-redux";
+// import { RootState } from "../../store/store";
+import { useGetRandomMovieQuery, useGetTopTenMovieQuery } from "../../features/movie/api/movie.api";
+import { MainPageProps } from "./MainPage.types";
 
 // ! меню хедера не соответвует макету
 
 
 
-const MainPage: React.FC<MainPageProps> = ({onFav}) => {
+const MainPage: React.FC<MainPageProps> = () => {
   // const { id } = useParams();
   const navigate = useNavigate();
 
@@ -28,7 +29,7 @@ const MainPage: React.FC<MainPageProps> = ({onFav}) => {
   // const { data: movieRandom, refetch } = useRandomMovie();
 
   const {data: movieRandom, refetch} =  useGetRandomMovieQuery();
-  const {data: topListCard} = useTopTenMovies();
+  const {data: topListCard} = useGetTopTenMovieQuery();
 
 
 //   console.log("Data:", data);
@@ -51,7 +52,7 @@ const MainPage: React.FC<MainPageProps> = ({onFav}) => {
 
 // console.log(modal)
 
- const { mutate } = useUserLogin();
+//  const { mutate } = useUserLogin();
 
   return (
     <>
@@ -61,8 +62,8 @@ const MainPage: React.FC<MainPageProps> = ({onFav}) => {
         handleRefetch={refetch}
         handleLike={() => console.log("sssss")}
         handleAboutFilm={() => navigate(`/movie/${movieRandom?.id}`)}
-        // handleTriller={() => console.log("TRILLER")}
-        handleTriller={() => mutate({ email: "mrt10", password: "1"})}
+        handleTriller={() => console.log("TRILLER")}
+        // handleTriller={() => mutate({ email: "mrt10", password: "1"})}
         // handleTriller={() => registr({ email: "mrt10", password: "1", name: "MRT", surname: "MORGUNOV"})}
       />
 

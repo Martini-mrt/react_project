@@ -1,6 +1,7 @@
 import { Navigate, useLocation } from "react-router";
 import { useGetUserProfileQuery } from "../../api/user.api";
 import { ProtectedRouteProps } from "./ProtectedRoute.types";
+import { useAuthStatus } from "../../hooks/useAuthStatus";
 
 
 
@@ -9,14 +10,19 @@ const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
   
   // Берем данные профиля. 
   // RTK Query возьмет их из кэша, если они там есть.
-  const { data: user, isLoading, isFetching } = useGetUserProfileQuery();
+//   const { data: user, isLoading, isFetching } = useGetUserProfileQuery();
+
+
+
+ const { isAuth, isLoading } = useAuthStatus();
+
 
   // Пока идет первичная загрузка — показываем заглушку
-  if (isLoading || isFetching) {
+  if (isLoading ) {
     return <div>Загрузка...</div>; 
   }
 
-  if (!user) {
+  if (!isAuth) {
     // Если юзера нет — отправляем на главную, 
     // но в state передаем background, чтобы открылась модалка!
     return (

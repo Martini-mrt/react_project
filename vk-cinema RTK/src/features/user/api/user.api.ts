@@ -9,6 +9,7 @@ import {
   SuccessLoginUserSchema,
   SuccessProfileUserSchema,
   SuccessRegistrationsUserSchema,
+  TSuccessProfileUserSchema,
   TSuccessUserAuthSchema,
 } from "../schema/UserSchem";
 
@@ -20,6 +21,7 @@ export const userApi = api.injectEndpoints({
         method: "POST",
         body: { email, password },
       }),
+      invalidatesTags: ["auth/login"],
       transformResponse: (response: unknown): TSuccessUserAuthSchema => {
         const result = SuccessLoginUserSchema.safeParse(response);
           console.log(result)
@@ -30,7 +32,7 @@ export const userApi = api.injectEndpoints({
 
         return result.data;
       },
-      invalidatesTags: ["auth/login"],
+      
     }),
 
     logout: builder.mutation<TSuccessUserAuthSchema, void>({
@@ -83,10 +85,10 @@ export const userApi = api.injectEndpoints({
 
 
 
-   getUserProfile: builder.query<TSuccessUserAuthSchema, void>({
+   getUserProfile: builder.query<TSuccessProfileUserSchema, void>({
       query: () => `/profile`,
       providesTags: ['auth/login'], // Этот запрос "слушает" тег User
-      transformResponse: (response: unknown): TSuccessUserAuthSchema => {
+      transformResponse: (response: unknown): TSuccessProfileUserSchema => {
         const result = SuccessProfileUserSchema.safeParse(response);
 
         console.log(result)

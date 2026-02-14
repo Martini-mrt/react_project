@@ -31,7 +31,7 @@ const HeroFilm: React.FC<HeroFilmProps> = ({
     posterUrl,
   } = movieData || {};
 
-  const { mutate } = useAddToFavorites();
+  // const { mutate } = useAddToFavorites();
 
   return (
     <section className="hero-film">
@@ -52,7 +52,7 @@ const HeroFilm: React.FC<HeroFilmProps> = ({
             handleRefetch={handleRefetch}
             handleAboutFilm={handleAboutFilm}
             // handleLike={() => mutate(String(id))}
-            handleLike={handleLike}
+            favoriteId={id}
             handleTriller={handleTriller}
           />
         </div>

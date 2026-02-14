@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import { modalAuthActions, modalAuthState } from "../../store/slice";
 import { useUserProfile } from "../../hooks/User/useUser";
 import { closeAuthModal, openAuthModal } from "../../store/sliceModal";
-import Login from "../Login";
+import Login from "../../features/user/components/Login";
 
 
 

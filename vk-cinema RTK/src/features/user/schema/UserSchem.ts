@@ -29,3 +29,4 @@ export const SuccessUserAuthSchema = z.union([
 
 export type TSuccessUserAuthSchema = z.infer<typeof SuccessUserAuthSchema>;
 
+export type TSuccessProfileUserSchema = z.infer<typeof SuccessProfileUserSchema>;

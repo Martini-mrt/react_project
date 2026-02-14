@@ -2,6 +2,7 @@ export interface BtnBoxProps {
   isSingleMoviePage?: boolean;
   handleTriller?: () => void;
   handleAboutFilm?: () => void;
-  handleLike?: () => void;
+  // handleLike?: () => void;
+  favoriteId: number;
   handleRefetch?: () => void;
 }

@@ -5,7 +5,7 @@ const API_URL = "/api";
 export const api = createApi({
   reducerPath: "api",
   // тег для инвалидации
-  tagTypes: ['auth/login','Favorites'],
+  tagTypes: ['auth/login','favorites'],
   baseQuery: fetchBaseQuery({
     baseUrl: API_URL,
     // ЭТО ПОЛЕ ОБЯЗАТЕЛЬНО ДЛЯ КУК

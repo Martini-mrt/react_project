@@ -26,7 +26,8 @@ getFavorites: builder.query<TMovie[], void>({
       }
 
       return result.data;
-    }
+    },
+    providesTags: ['favorites']
 }),
 
 addToFavorites: builder.mutation<TSuccessUserAuthSchema, string>({
@@ -45,13 +46,13 @@ addToFavorites: builder.mutation<TSuccessUserAuthSchema, string>({
 
       return result.data;
     },
-    invalidatesTags: ['Favorites']
+    invalidatesTags: ['favorites']
 }),
 
 
 deleteFavorites: builder.mutation<TSuccessUserAuthSchema, string>({
     query: (id) => ({
-       url: `/favorites`,
+       url: `/favorites/${id}`,
       method: 'DELETE',
       body: {id}
     }),
@@ -65,8 +66,33 @@ deleteFavorites: builder.mutation<TSuccessUserAuthSchema, string>({
 
       return result.data;
     },
-    invalidatesTags: ['Favorites']
+    invalidatesTags: ['favorites']
 }),
+
+
+
+// Единая мутация для переключения
+// Передаем ID и по isAdded делаем мутацию POST / DELETE
+    toggleFavorite: builder.mutation<TSuccessUserAuthSchema, { id: string; isAdded: boolean }>({
+      query: ({ id, isAdded }) => ({
+        url: isAdded? `/favorites/${id}` : `/favorites`,
+        // Если уже добавлено (isAdded: true) — значит надо удалить (DELETE)
+        // Если нет — добавить (POST)
+        method: isAdded ? 'DELETE' : 'POST', 
+        body: { id }
+      }),
+      transformResponse: (response: unknown): TSuccessUserAuthSchema => {
+        const result = SuccessLoginUserSchema.safeParse(response);
+        if (!result.success) throw new Error("Server data corrupted");
+        return result.data;
+      },
+      // Инвалидируем избранное, чтобы списки обновились
+      invalidatesTags: ['favorites','auth/login']
+    }),
+
+
+
+
 
 
   }),
@@ -78,5 +104,6 @@ deleteFavorites: builder.mutation<TSuccessUserAuthSchema, string>({
 export const { 
     useGetFavoritesQuery, 
     useAddToFavoritesMutation, 
-    useDeleteFavoritesMutation
+    useDeleteFavoritesMutation,
+    useToggleFavoriteMutation,
 } = favoritesApi;
